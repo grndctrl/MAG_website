@@ -1,1 +1,1 @@
-# wordpress-docker-boilerplate
+# MAG Architecten Website
