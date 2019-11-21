@@ -1,6 +1,11 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html ,
 body {
-  @apply text-black bg-white font-sans;
+  @apply text-black bg-white font-sans font-light;
 }
 
 a,
@@ -11,6 +16,10 @@ a:visited {
   color: inherit;
 }
 
-a:hover {
-  @apply underline;
+a.underline {
+  @apply no-underline border-black border-b-2;
+
+  &.text-green-dark {
+    @apply border-green-dark;
+  }
 }

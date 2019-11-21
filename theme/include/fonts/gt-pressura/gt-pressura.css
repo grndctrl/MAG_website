@@ -1,0 +1,21 @@
+@font-face {
+  font-style:  normal;
+  font-weight: 400;
+  font-family: 'GT Pressura';
+  src: url('gt-pressura-regular.eot?') format('eot'),
+       url('gt-pressura-regular.woff2') format('woff2'),
+       url('gt-pressura-regular.woff') format('woff'),
+       url('gt-pressura-regular.ttf')  format('truetype'),
+       url('gt-pressura-regular.svg#gt-pressura-regular') format('svg');
+}
+
+@font-face {
+  font-style:  normal;
+  font-weight: 300;
+  font-family: 'GT Pressura';
+  src: url('gt-pressura-light-web.eot?') format('eot'),
+       url('gt-pressura-light-web.woff2') format('woff2'),
+       url('gt-pressura-light-web.woff') format('woff'),
+       url('gt-pressura-light-web.ttf')  format('truetype'),
+       url('gt-pressura-light-web.svg#gtpressura-light') format('svg');
+}

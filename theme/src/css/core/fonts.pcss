@@ -11,11 +11,37 @@ h3 {
 }
 
 h1, h2, h3 {
-  @apply leading-tight font-bold tracking-wide;
+  @apply leading-tight font-normal;
   margin-bottom: 0.5em;
 }
 
 p {
   @apply leading-normal mb-1;
   max-width: 40em;
+}
+
+@media lg {
+  .text-hero {
+    @apply text-6xl;
+  }
+
+  .text-xlarge {
+    @apply text-5xl;
+  } 
+
+  .text-large {
+    @apply text-4xl;
+  } 
+
+  .text-quote {
+    @apply text-3xl;
+  } 
+
+  .text-title {
+    @apply text-2xl;
+  } 
+
+  .text-body {
+    @apply text-lg;
+  } 
 }
