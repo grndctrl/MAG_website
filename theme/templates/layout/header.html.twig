@@ -1,42 +1,44 @@
-<div class="absolute top-0 z-50 w-full">
-<div class="section container">
-  <div class="branding text-green-light">
-    <a href="{{ site.link }}">
-      {% include "components/header-logo.svg.twig" %}
-    </a>
+<header class="header-main">
+
+  <div class="absolute top-0 left-0 z-40">
+    <div class="section container">
+      <a href="{{ site.link }}">
+        {% include "components/header-logo.svg.twig" %}
+      </a>
+    </div>
   </div>
-</div>
-</div>
 
-<header class="header-main header-unpin z-50">
-  <div class="container">
+  <div class="fixed top-0 z-30 w-full flex items-center">
 
-    {% block header %}
+    <div class="section container">
 
-      <nav id="nav-main" class="nav-main flex justify-end items-center" role="navigation">
+      {% block header %}
 
+        <nav id="nav-main" class="nav-main flex justify-end items-center" role="navigation">
 
-        <div class="nav-menu text-hero leading-none z-40">
-        <div class="container">
-          <div class="row">
-            <div class="col h-screen ml-2/12">
-              {% include "components/menu.html.twig" with {
-                "menu" : menu.get_items
-              } %}
+          <div class="nav-menu text-hero leading-none z-40">
+            <div class="container">
+              <div class="row">
+                <div class="col h-screen ml-2/12">
+                  {% include "components/menu.html.twig" with {
+                    "menu" : menu.get_items
+                  } %}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        </div>
 
-        <div class="nav-burger toggle-menu relative z-50">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+          <div class="nav-burger toggle-menu relative z-50">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-      </nav>
+        </nav>
 
-    {% endblock %}
+      {% endblock %}
+
+    </div>
 
   </div>
 </header>

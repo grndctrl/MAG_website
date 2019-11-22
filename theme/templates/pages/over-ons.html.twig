@@ -1,0 +1,152 @@
+{# Sample page #}
+
+{% extends "core/base.html.twig" %}
+
+{% block main %}
+
+  <section class="header-offset">
+    <div class="container">
+
+      <div class="row items-start">
+        <div class="col ml-1/12 w-6/12">
+
+          {% include "components/svg-wrapper.html.twig" with {
+            component: 'ontwerpen-begint-bij-2',
+            width: 679
+          } %}
+
+          <div class="my-10">
+            <div class="expander font-normal text-body">
+              Lees meer
+              <div class="caret">
+                {% include "components/caret.svg.twig" %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col w-3/12 mx-1/12 mt-1/12">
+
+          {% include "components/image.html.twig" with {
+            figure_class : "portrait"
+          } %}
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="">
+    <div class="container">
+
+      <div class="row items-start">
+        <div class="col w-5/12">
+
+          {% include "components/image.html.twig" with {
+            figure_class : "landscape"
+          } %}
+
+        </div>
+
+        <div class="col w-5/12 mx-1/12 mt-2/12">
+          <div class="flex flex-col items-end">
+            <div>
+              {% include "components/svg-wrapper.html.twig" with {
+                component: 'wij-zorgen-voor',
+                width: 490
+              } %}
+
+              <div class="my-10">
+                <div class="expander font-normal text-body">
+                  Lees meer
+                  <div class="caret">
+                    {% include "components/caret.svg.twig" %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="mt-12">
+    <div class="container">
+
+      <div class="row items-start">
+        <div class="col w-9/12 ml-1/12">
+
+          {% include "components/image.html.twig" with {
+            figure_class : "landscape"
+          } %}
+
+        </div>
+      </div>
+
+      <div class="row my-32">
+        <div class="col w-8/12 mx-2/12">
+
+          {% include "components/svg-wrapper.html.twig"  with { 
+            component: "samen-komen",
+            width: 579
+          } %}
+
+          <div class="my-10">
+            <div class="expander font-normal text-body">
+              Lees meer
+              <div class="caret">
+                {% include "components/caret.svg.twig" %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section bg-white">
+  <div class="container mt-10 mb-20">
+  <div class="row mb-10">
+  <div class="col mx-1/12 text-title">Partners</div>
+  </div>
+  <div class="row items-start">
+  
+  <div class="col w-4/12 ml-1/12 text-body">
+  <p class="mr-8">
+    MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
+    <br><br>
+    MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
+    <br><br>
+    In nauwe samenwerking met 
+    Stichting Kilimanjaro Wonen
+    <br><br>
+    Samenwerkings verband KdV architectuur
+    <br><br>
+    Collegiale samenwerking
+    Von Bergh Bouwadvies
+  </p>
+  </div>
+
+  <div class="col w-7/12">
+
+  {% include "components/image.html.twig" with {
+    figure_class: 'landscape'
+  } %}
+
+  </div>
+
+  </div>
+  </div>
+  </section>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

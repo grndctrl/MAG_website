@@ -1,0 +1,52 @@
+{# Sample page #}
+
+{% extends "core/base.html.twig" %}
+
+{% block main %}
+
+  <section class="header-offset pb-40">
+    <div class="container">
+
+      <div class="row">
+        <div class="col w-8/12 mx-2/12">
+
+          {% include "components/svg-wrapper.html.twig" with {
+            component: 'iedereen-heeft-ideeen',
+            width: 724
+          } %}
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col w-5/12">
+          <p>
+            Bel ons<br>
+            040 29 61 166<br>
+            <br>
+            Stuur ons een bericht<br>
+            info@mag-architecten.nl<br>
+            <br>
+            Bezoek ons op<br>
+            Patrijsstraat 15<br>
+            5613 EK Eindhoven<br>
+            Google maps
+          </p>
+        </div>
+        <div class="col w-7/12">
+          {% include "components/image.html.twig" with {
+            figure_class : "landscape"
+          } %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}
