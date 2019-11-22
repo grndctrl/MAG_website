@@ -1,4 +1,5 @@
 import { images } from './images'
 import { dummyModule } from './dummy-module'
+import { scrollAnchors } from './scroll-anchors'
 
-export { images, dummyModule }
+export { scrollAnchors, images, dummyModule }

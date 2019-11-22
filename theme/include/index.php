@@ -20,7 +20,7 @@ $context['posts'] = new Timber\PostQuery();
 $context['foo'] = 'bar';
 
 if (is_front_page()) {
-    $context['page'] = new TimberPost();
+    $context['post'] = new TimberPost();
 }
 
 Timber::render( $templates, $context );

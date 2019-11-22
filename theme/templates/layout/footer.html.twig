@@ -1,53 +1,30 @@
-<div class="footer-wrapper relative">
+<footer class="section footer-main bg-green-dark text-white text-body">
+  <div class="container">
 
-  <section class="section footer-main bg-gray-900 text-gray-200 z-50">
-    <div class="container">
+    {% block footer %}
 
-      {% block footer %}
+      <div class="row">
 
-        <div class="absolute inset-0 container">
-          <div class="flex justify-end">
-            <div class="btn-close toggle-footer">
-              <span></span>
-            </div>
-          </div>
+        <div class="col">
+
+          <p class="mb-10">
+            {{ global_contact.meta('address') }}
+          </p>
+          <p class="mb-10">
+            <a href="tel:{{ global_contact.meta('phone') }}">{{ global_contact.meta('phone') }}</a><br>
+            <a class="text-white underline" href="mailto:{{ global_contact.meta('email') }}">{{ global_contact.meta('email') }}</a>
+          </p>
+          <p class="text-base">
+            &copy; 2019 MAG Architecten
+          </p>
+
         </div>
-        {% if footer_widget %}
 
-          <h1 class="mb-4 text-4xl font-bold">Contact us</h1>
-          <div class="flex mb-4">
-            <div class="mr-2 text-gray-600">T</div>
-            <div>
-              <p>+31 6 12345678</p>
-            </div>
-          </div>
-          <div class="flex mb-4">
-            <div class="mr-2 text-gray-600">E</div>
-            <div>
-              <p>hello@mail.com</p>
-            </div>
-          </div>
-          <div class="flex mb-8">
-            <div class="mr-2 text-gray-600">A</div>
-            <div>
-              <p>Torenallee 72-50<br>5617 Bd Eindhoven</p>
-            </div>
-          </div>
+      </div>
 
-          {# <p>{{ footer_widget.footer_text }}</p> #}
-          <p class="text-gray-600">&copy;
-            {{ "now"|date("Y") }}</p>
+    {% endblock %}
 
-        {% else %}
-
-          <p>&copy;
-            {{ "now"|date("Y") }}</p>
-
-        {% endif %}
-
-      {% endblock %}
-
-    </div>
-  </section>
+  </div>
+</footer>
 
 </div>

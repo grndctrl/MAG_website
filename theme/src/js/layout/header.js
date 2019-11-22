@@ -1,10 +1,17 @@
-import { CoreModule, CoreEventListener, CoreScrollScene, eventBus } from '../core'
+import {
+  CoreModule,
+  CoreEventListener,
+  CoreScrollScene,
+  eventBus
+} from '../core'
 
 class Header extends CoreModule {
   init(options) {
     this.element = options.element
 
     if (this.element) {
+      this.setColor()
+
       let events = []
       events.push(
         new CoreEventListener('pin-header', () => {
@@ -16,6 +23,19 @@ class Header extends CoreModule {
           this.unpin()
         })
       )
+
+      events.push(
+        new CoreEventListener('header-color', (event) => {
+          this.changeColor(event)
+        })
+      )
+
+      events.push(
+        new CoreEventListener('barba-before-enter', (event) => {
+          this.setColor()
+        })
+      )
+
       super.events = events
 
       let scenes = []
@@ -29,8 +49,8 @@ class Header extends CoreModule {
           },
           leave: (event) => {
             eventBus.$emit('unpin-header')
-          }}
-        )
+          }
+        })
       )
       super.scrollScenes = scenes
     } else {
@@ -46,6 +66,30 @@ class Header extends CoreModule {
 
   unpin() {
     this.element.classList.remove('pinned')
+  }
+
+  setColor() {
+    let currentPage = document
+      .querySelector('.main')
+      .getAttribute('data-barba-namespace')
+
+    if (currentPage === 'home') {
+      this.element.classList.add('light')
+      this.element.classList.remove('dark')
+    } else {
+      this.element.classList.add('dark')
+      this.element.classList.remove('light')
+    }
+  }
+
+  changeColor(event) {
+    if (this.element.classList.contains('light')) {
+      this.element.classList.add('dark')
+      this.element.classList.remove('light')
+    } else {
+      this.element.classList.add('light')
+      this.element.classList.remove('dark')
+    }
   }
 }
 

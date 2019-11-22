@@ -5,9 +5,17 @@
     @apply fixed w-full h-screen flex flex-col bg-red text-white;
     top: 0;
     left: 100vw;
-    padding: calc($header-height + $site-offset) $site-offset;
     .nav-menu-item {
       @apply ml-0;
+      transition: $short easeOutCirc;
+
+      &:hover {
+        @apply ml-10;
+      }
+
+      &.active {
+        @apply ml-10 font-normal;
+      }
     }
   }
 
@@ -17,8 +25,8 @@
     width: $burger-width;
     height: $burger-height;
     span {
-      @apply bg-black w-full self-end;
-      height: 2px;
+      @apply w-full self-end;
+      height: 3px;
       transition: $medium easeOutCirc;
     }
 
@@ -27,48 +35,47 @@
   }
   &.animating {
     .nav-menu {
-      transition: left $medium easeInOutCirc;
+      transition: left $short easeInOutCirc;
     }
   }
   &.active {
     .nav-menu {
-      left: 10vw;
+      left: 0;
     }
     .nav-burger {
       span {
         @apply bg-white;
         margin: 0 !important;
         &:first-child {
-          transform: translateY(calc($burger-height / 2 - 1px));
+          transform: translateY(calc($burger-height / 2 - 1.5px)) rotate(45deg);
         }
         &:last-child {
-          transform: translateY(calc($burger-height / -2 + 1px));
+          transform: translateY(calc($burger-height / -2 + 1.5px)) rotate(-45deg);
         }
+
+        &:not(:first-child):not(:last-child) {
+          opacity: 0;
+        }
+
       }
     }
   }
 }
 
-@screen sm {
-  .nav-main {
-    &.active {
-      .nav-menu {
-        left: 20vw;
+.header-main {
+  &.light {
+    .nav-main:not(.active) {
+      .nav-burger span {
+        @apply bg-green-light;
       }
     }
   }
-}
 
-@screen lg {
-  .nav-main {
-    .nav-menu {
-      @apply relative w-auto h-auto inset-auto flex-row p-0 bg-transparent text-black;
-      .nav-menu-item {
-        @apply ml-4;
+  &.dark {
+        .nav-main:not(.active) {
+      .nav-burger span {
+        @apply bg-green-dark;
       }
-    }
-    .nav-burger {
-      @apply hidden;
     }
   }
 }

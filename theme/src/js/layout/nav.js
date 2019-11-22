@@ -12,11 +12,13 @@ class Nav extends CoreModule {
       toggle.addEventListener('click', this.onToggle)
     })
 
-    this.closers = document.querySelectorAll('.nav-menu-item')
-    this.closers.forEach((closer) => {
+    this.navMenuItems = document.querySelectorAll('.nav-menu-item')
+    this.navMenuItems.forEach((closer) => {
       closer.addEventListener('click', this.onClose)
     })
 
+    this.activateMenuItemForCurrentPage()
+    
     return super.init()
   }
 
@@ -27,7 +29,7 @@ class Nav extends CoreModule {
       toggle.removeEventListener('click', this.onToggle)
     })
 
-    this.closers.forEach((closer) => {
+    this.navMenuItems.forEach((closer) => {
       closer.removeEventListener('click', this.onClose)
     })
   }
@@ -56,12 +58,9 @@ class Nav extends CoreModule {
       })
     )
 
-    
     events.push(
-      new CoreEventListener('window-resized', () => {
-        if (window.innerWidth >= 1024) {
-          this.closeMenu()
-        }
+      new CoreEventListener('barba-before-enter', () => {
+        this.activateMenuItemForCurrentPage()
       })
     )
 
@@ -100,6 +99,18 @@ class Nav extends CoreModule {
         this.element.classList.remove('animating')
       }, 400)
     }
+  }
+
+  activateMenuItemForCurrentPage() {
+    let currentPage = document.querySelector('.main').getAttribute('data-barba-namespace')
+
+    this.navMenuItems.forEach(item => {
+      item.classList.remove('active')
+
+      if (item.getAttribute('data-nav-target') === currentPage) {
+        item.classList.add('active')
+      }
+    })
   }
 }
 

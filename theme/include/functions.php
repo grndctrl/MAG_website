@@ -105,6 +105,18 @@ class MagArchitecten extends Timber\Site
         $context['menu'] = new Timber\Menu();
         $context['site'] = $this;
 
+        $args = array(
+          'post_type' => 'global'
+        );
+        $globals = Timber::get_posts($args);
+        $context['globals'] = $globals;
+
+        foreach ($globals as $global) {
+            if ($global->slug == 'contact') {
+                $context['global_contact'] = $global;
+            }
+        }
+
         return $context;
     }
 
@@ -150,11 +162,12 @@ class MagArchitecten extends Timber\Site
 
     public function load_scripts()
     {
-        wp_enqueue_style('theme', get_template_directory_uri() . '/css/theme.css');
-        wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css');
-        wp_enqueue_script('theme', get_template_directory_uri() . '/js/theme.js', array(), '1.0.0', true);
-        wp_enqueue_script('head', get_template_directory_uri() . '/js/head.js', array(), '1.0.0', false);
-    }
+      wp_enqueue_style('theme', get_template_directory_uri() . '/css/theme.css');
+      wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css');
+      wp_enqueue_script('theme', get_template_directory_uri() . '/js/theme.js', array(), time(), true);
+      wp_enqueue_script('chunks', get_template_directory_uri() . '/js/chunks.js', array(), time(), true);
+      wp_enqueue_script('head', get_template_directory_uri() . '/js/head.js', array(), time(), false);
+  }
 
     public function load_admin_scripts()
     {

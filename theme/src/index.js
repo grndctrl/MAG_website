@@ -4,7 +4,7 @@ import 'zenscroll'
 
 import { core } from './js/core'
 import { header, nav, footer, barbaManager } from './js/layout'
-import { images } from './js/components'
+import { images, scrollAnchors } from './js/components'
 
 ;(function() {
   core.attach(header, { element: document.querySelector('.header-main') })
@@ -13,5 +13,6 @@ import { images } from './js/components'
   core.attach(barbaManager)
 
   core.attach(images, {}, true)
+  core.attach(scrollAnchors, {}, true)
   core.init()
 })()

@@ -9,12 +9,18 @@
 .header-main {
   @apply bg-transparent;
   padding-bottom: calc($site-offset / 2);
-  padding-top: calc($site-offset * 2);
+  padding-top: $site-offset;
   transition: $short ease;
   
 
   &.pinned {
-    @apply bg-white;
     padding-top: $site-offset;
+  }
+}
+
+
+@screen lg {
+  .header-offset {
+    padding-top: 200px;
   }
 }

@@ -1,0 +1,88 @@
+{# Sample page #}
+
+{% extends "core/base.html.twig" %}
+
+{% block main %}
+
+  <section class="header-offset pb-64 min-h-screen bg-green-dark text-green-light">
+    <div class="container">
+
+      <div class="row">
+        <div class="col w-9/12">
+          {% include "components/gebouw-van.svg.twig" %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="scroll-anchor" data-scroll-event="header-color" data-scroll-hook="0.001" data-scroll-offset="-55"></div>
+
+  <section class="section -mt-40">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col w-6/12">
+          {% include "components/image.html.twig" with {
+            figure_class: 'landscape'
+          } %}
+          <p class="text-title leading-loose">
+            <a class="underline" href="#">
+              Kavel F
+            </a>
+          </p>
+        </div>
+        <div class="col mx-1/12 w-4/12">
+          {% include "components/image.html.twig" with {
+            figure_class: 'portrait'
+          } %}
+          <p class="text-title leading-loose">
+            <a class="underline" href="#">
+              CPO Akkerstraat
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section mb-20 text-green-dark">
+  <div class="container">
+  <div class="row items-end">
+
+  <div class="col ml-1/12 w-6/12">
+    <div class="w-full pb-16">
+    {% include "components/ontwerpen-begint-bij.svg.twig" %}
+    </div>
+
+
+    <a class="text-body text-green-dark underline" href="#">Meer over ons</a>
+
+
+  </div>
+    <div class="col w-4/12">
+
+    <p class="text-body pb-16">
+      Architectuur zien wij als een gebouw van stenen en een gebouw van mensen.
+    </p>
+
+
+    <a class="text-body text-green-dark underline" href="#">Onze projecten</a>
+
+    
+  </div>
+
+  </div>
+  </div>
+  </section>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
