@@ -15,16 +15,45 @@ button,
     }
 }
 
-.expander {
+
+.expander-content-wrapper {
+    height: 0;
+    overflow: hidden;
+}
+
+.expander-toggle-wrapper {
+    overflow: hidden;
+}
+
+.expander-toggle {
     display: inline-block;
     position: relative;
+    cursor: pointer;
+    padding-right: 1.5em;
 
     .caret {
         position: absolute;
         bottom: 0;
         right: 0;
-        margin-right: -1.2em;
         margin-bottom: 0.35em;
         width: 0.8em;
+    }
+}
+
+.cursor-bekijk-wrapper {
+    overflow: hidden;
+    position: relative;
+    cursor: none;
+
+    .cursor-bekijk {
+        @apply absolute top-0 left-0 bg-white rounded-full w-20 h-20 -ml-10 -mt-10 flex items-center justify-center;
+        transition: opacity $short ease;
+        opacity: 0;
+    }
+
+    &.active {
+        .cursor-bekijk {
+            opacity: 1;
+        }
     }
 }

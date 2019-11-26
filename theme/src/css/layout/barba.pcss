@@ -30,17 +30,17 @@
 
 
 .barba-slide-leave-to {
-  transform: translateY(-100vh);
+  /* transform: translateY(-40px); */
   opacity: 0;
 }
 .barba-slide-enter {
-  transform: translateY(100vh);
+  transform: translateY(40px);
   opacity: 0;
 }
 
 
 .barba-wipe {
-  @apply fixed w-full h-screen inset-x-0 bg-white z-40;
+  @apply fixed w-full h-screen inset-x-0 bg-green-light z-40;
   top: 100vh;
   transition: top $medium easeInOutCirc;
 }

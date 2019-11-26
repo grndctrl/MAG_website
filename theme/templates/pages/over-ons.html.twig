@@ -15,14 +15,9 @@
             width: 679
           } %}
 
-          <div class="my-10">
-            <div class="expander font-normal text-body">
-              Lees meer
-              <div class="caret">
-                {% include "components/caret.svg.twig" %}
-              </div>
-            </div>
-          </div>
+          {% include "components/expander.html.twig" with {
+            content : "lorem ipsum"
+          } %}
 
         </div>
 
@@ -58,18 +53,12 @@
                 width: 490
               } %}
 
-              <div class="my-10">
-                <div class="expander font-normal text-body">
-                  Lees meer
-                  <div class="caret">
-                    {% include "components/caret.svg.twig" %}
-                  </div>
-                </div>
-              </div>
+              {% include "components/expander.html.twig" with {
+                content : "lorem ipsum"
+              } %}
+
             </div>
-
           </div>
-
         </div>
       </div>
 
@@ -97,14 +86,9 @@
             width: 579
           } %}
 
-          <div class="my-10">
-            <div class="expander font-normal text-body">
-              Lees meer
-              <div class="caret">
-                {% include "components/caret.svg.twig" %}
-              </div>
-            </div>
-          </div>
+          {% include "components/expander.html.twig" with {
+            content : "lorem ipsum"
+          } %}
 
         </div>
       </div>
@@ -113,38 +97,36 @@
   </section>
 
   <section class="section bg-white">
-  <div class="container mt-10 mb-20">
-  <div class="row mb-10">
-  <div class="col mx-1/12 text-title">Partners</div>
-  </div>
-  <div class="row items-start">
-  
-  <div class="col w-4/12 ml-1/12 text-body">
-  <p class="mr-8">
-    MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
-    <br><br>
-    MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
-    <br><br>
-    In nauwe samenwerking met 
-    Stichting Kilimanjaro Wonen
-    <br><br>
-    Samenwerkings verband KdV architectuur
-    <br><br>
-    Collegiale samenwerking
-    Von Bergh Bouwadvies
-  </p>
-  </div>
+    <div class="container mt-10 mb-20">
+      <div class="row mb-10">
+        <div class="col mx-1/12 text-title">Partners</div>
+      </div>
+      <div class="row items-start">
 
-  <div class="col w-7/12">
+        <div class="col w-4/12 ml-1/12 text-body">
+          <p class="mr-8">
+            MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
+            <br><br>
+            MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
+            <br><br>
+            In nauwe samenwerking met Stichting Kilimanjaro Wonen
+            <br><br>
+            Samenwerkings verband KdV architectuur
+            <br><br>
+            Collegiale samenwerking Von Bergh Bouwadvies
+          </p>
+        </div>
 
-  {% include "components/image.html.twig" with {
-    figure_class: 'landscape'
-  } %}
+        <div class="col w-7/12">
 
-  </div>
+          {% include "components/image.html.twig" with {
+            figure_class : "landscape"
+          } %}
 
-  </div>
-  </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
 {% endblock %}

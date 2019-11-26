@@ -1,0 +1,51 @@
+{# Sample page #}
+
+{% extends "core/base.html.twig" %}
+
+{% block main %}
+
+  <section class="section header-offset">
+    <div class="container">
+      <div class="row">
+        <div class="col mx-1/12 w-10/12">
+          <h1 class="font-light text-xlarge mb-20">
+            Onze Projecten
+          </h1>
+
+          <div class="row flex-wrap">
+
+            {% for item in 1..4 %}
+
+              <div class="col w-1/2 mb-20">
+                <a href="#">
+                  <div class="cursor-bekijk-wrapper">
+                    {% include "components/image.html.twig" with {
+                      figure_class: 'landscape-wide'
+                    } %}
+
+                    <div class="cursor-bekijk text-body">
+                      <span class="-mt-2">bekijk</span>
+                    </div>
+                  </div>
+
+                  <div class="mt-4">
+                    <h3 class="text-title font-light">
+                      <span class="border-b-2 border-black">
+                        Lorem Ipsum
+                      </span>
+                    </h3>
+                  </div>
+                </div>
+              </a>
+
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}
