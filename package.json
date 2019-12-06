@@ -60,5 +60,7 @@
     "webpack-merge": "^4.2.1",
     "zenscroll": "^4.0.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "swiper": "^5.2.1"
+  }
 }

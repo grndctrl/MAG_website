@@ -1,7 +1,19 @@
-import { CoreModule } from '../core'
+import { CoreModule, CoreScrollScene, CoreEventListener, eventBus } from '../core'
 
 class CursorBekijk extends CoreModule {
   init() {
+    const events = []
+    events.push(
+      new CoreEventListener(
+        'cursor-bekijk-reinit',
+        (event) => {
+          this.destroy();
+          this.init();
+        }
+      )
+    )
+    super.eventListeners = events
+    
     this.wrappers = document.querySelectorAll('.cursor-bekijk-wrapper')
 
     this.wrappers.forEach(wrapper => {

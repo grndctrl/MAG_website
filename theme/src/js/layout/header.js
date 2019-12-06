@@ -4,9 +4,15 @@ import {
   CoreScrollScene,
   eventBus
 } from '../core'
+import anime from 'animejs'
 
 class Header extends CoreModule {
   init(options) {
+    this.lastScrollPos = window.scrollY
+    this.scrollingUp = false
+    this.scrollOffset = 0
+    this.logo = document.querySelector('.header-logo')
+
     this.element = options.element
 
     if (this.element) {
@@ -57,6 +63,8 @@ class Header extends CoreModule {
       return { id: this.id, status: false, message: 'no .header-main element' }
     }
 
+    window.addEventListener('scroll', this.onScroll.bind(this))
+
     return super.init()
   }
 
@@ -90,6 +98,68 @@ class Header extends CoreModule {
       this.element.classList.add('light')
       this.element.classList.remove('dark')
     }
+  }
+
+  onScroll(event) {
+    if (window.scrollY < this.lastScrollPos) {
+      if (this.scrollingUp === false) {
+        this.scrollOffset = 0
+      }
+      this.scrollOffset += Math.abs(window.scrollY - this.lastScrollPos)
+      if (this.scrollOffset > 10) {
+        this.showLogo()
+      }
+      this.scrollingUp = true
+    } else {
+      if (this.scrollingUp === true) {
+        this.scrollOffset = 0
+      }
+      this.scrollOffset += Math.abs(window.scrollY - this.lastScrollPos)
+      if (this.scrollOffset > 40) {
+        this.hideLogo()
+      }
+      this.scrollingUp = false
+    }
+    this.lastScrollPos = window.scrollY
+  }
+
+  showLogo() {
+    if (!this.logo.classList.contains('animating')) {
+      this.logo.classList.add('animating')
+    
+      let top = 0
+      anime({
+        targets: this.logo,
+        top: top,
+        easing: 'easeInSine',
+        duration: 400,
+        complete: () => {
+          this.logo.classList.remove('animating')
+        }
+      })
+    }
+  }
+
+  hideLogo() {
+    if (!this.logo.classList.contains('animating')) {
+      this.logo.classList.add('animating')
+    
+      let top = '-' + this.logo.clientHeight + 'px'
+      anime({
+        targets: this.logo,
+        top: top,
+        easing: 'easeInSine',
+        duration: 400,
+        complete: () => {
+          this.logo.classList.remove('animating')
+        }
+      })
+    }
+  }
+
+  destroy() {
+    window.removeEventListener('scroll', this.onScroll.bind(this))
+    super.destroy()
   }
 }
 

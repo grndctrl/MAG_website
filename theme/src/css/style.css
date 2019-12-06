@@ -10,6 +10,7 @@
 /*  */
 @import "./components/components.pcss";
 @import "./components/images.pcss";
+@import "./components/slider.pcss";
 /*  */
 @import "./layout/barba.pcss";
 @import "./layout/header.pcss";
@@ -18,3 +19,17 @@
 @import "./layout/nav.pcss";
 /*  */
 @import "./components/anime.pcss";
+/*  */
+@responsive {
+  .border-box {
+    box-sizing: border-box;
+  }
+  .content-box {
+    box-sizing: content-box;
+  }
+}
+
+.rtl {
+  unicode-bidi:bidi-override;
+  direction: rtl;
+}

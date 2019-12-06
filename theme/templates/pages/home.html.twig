@@ -5,11 +5,14 @@
 {% block main %}
 
   <section class="header-offset pb-64 min-h-screen bg-green-dark text-green-light">
-    <div class="container">
+    <div class="container pt-16 md:pt-20">
 
       <div class="row">
-        <div class="col w-9/12">
+        <div class="col w-9/12 hidden md:block">
           {% include "components/gebouw-van.svg.twig" %}
+        </div>
+        <div class="col w-full md:hidden">
+          {% include "components/gebouw-van_mobile.svg.twig" %}
         </div>
       </div>
 
@@ -18,12 +21,12 @@
 
   <div class="scroll-anchor" data-scroll-event="header-color" data-scroll-hook="0.001" data-scroll-offset="-55"></div>
 
-  <section class="section -mt-40">
+  <section class="section -mt-48 md:-mt-40">
     <div class="container">
+      <h3 class="text-body text-xl text-green-light font-light mb-4">uitgelicht</h3>
+      <div class="row flex-wrap">
 
-      <div class="row">
-
-        <div class="col w-6/12">
+        <div class="col w-full mb-12 md:mb-0 md:w-6/12">
           {% include "components/image.html.twig" with {
             figure_class: 'landscape-wide'
           } %}
@@ -33,7 +36,7 @@
             </a>
           </p>
         </div>
-        <div class="col mx-1/12 w-4/12">
+        <div class="col w-full md:mx-1/12 md:w-4/12">
           {% include "components/image.html.twig" with {
             figure_class: 'portrait-wide'
           } %}
@@ -49,40 +52,37 @@
     </div>
   </section>
 
-  <section class="section mb-20 text-green-dark">
-  <div class="container">
-  <div class="row items-end">
+  <section class="section md:mb-20 text-green-dark">
+    <div class="container">
+      <div class="row items-end">
 
-  <div class="col ml-1/12 w-6/12">
-    <div class="w-full pb-16">
-    {% include "components/ontwerpen-begint-bij.svg.twig" %}
+        <div class="col w-full md:ml-1/12 md:w-6/12">
+          <div class="w-full hidden md:block pb-16">
+            {% include "components/ontwerpen-begint-bij.svg.twig" %}
+          </div>
+          <div class="w-full md:hidden pb-16">
+            {% include "components/ontwerpen-begint-bij_mobile.svg.twig" %}
+          </div>
+
+          <a class="text-body text-green-dark underline" href="#">Meer over ons</a>
+
+        </div>
+        <div class="col w-full md:w-4/12">
+
+          <p class="hidden md:block text-body">
+            Architectuur zien wij als een gebouw van stenen en een gebouw van mensen.
+          </p>
+
+          <p class="pt-20 md:pt-16">
+            <a class="text-xl md:text-lg text-green-dark underline" href="#">Bekijk onze projecten</a>
+          </p>
+
+        </div>
+
+      </div>
     </div>
-
-
-    <a class="text-body text-green-dark underline" href="#">Meer over ons</a>
-
-
-  </div>
-    <div class="col w-4/12">
-
-    <p class="text-body pb-16">
-      Architectuur zien wij als een gebouw van stenen en een gebouw van mensen.
-    </p>
-
-
-    <a class="text-body text-green-dark underline" href="#">Onze projecten</a>
-
-    
-  </div>
-
-  </div>
-  </div>
   </section>
 
-
-
 {% endblock %}
 
-{% block scripts %}
-
-{% endblock %}
+{% block scripts %}{% endblock %}

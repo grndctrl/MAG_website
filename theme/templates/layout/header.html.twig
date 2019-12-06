@@ -1,14 +1,16 @@
 <header class="header-main">
 
-  <div class="absolute top-0 left-0 z-40">
+  <div class="header-logo fixed top-0 left-0 z-20">
     <div class="section container">
       <a href="{{ site.link }}">
-        {% include "components/header-logo.svg.twig" %}
+        <div class="svg-wrapper">
+          {% include "components/header-logo.svg.twig" %}
+        </div>
       </a>
     </div>
   </div>
 
-  <div class="fixed top-0 z-30 w-full flex items-center">
+  <div class="pointer-events-none fixed top-0 z-30 w-full flex items-center">
 
     <div class="section container">
 
@@ -16,10 +18,10 @@
 
         <nav id="nav-main" class="nav-main flex justify-end items-center" role="navigation">
 
-          <div class="nav-menu text-hero leading-none z-40">
+          <div class="pointer-events-auto nav-menu text-hero leading-none z-40">
             <div class="container">
               <div class="row">
-                <div class="col h-screen ml-2/12">
+                <div class="col h-screen md:ml-2/12 uppercase leading-strict">
                   {% include "components/menu.html.twig" with {
                     "menu" : menu.get_items
                   } %}
@@ -28,7 +30,7 @@
             </div>
           </div>
 
-          <div class="nav-burger toggle-menu relative z-50">
+          <div class="pointer-events-auto nav-burger toggle-menu relative z-50">
             <span></span>
             <span></span>
             <span></span>

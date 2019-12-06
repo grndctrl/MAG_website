@@ -16,8 +16,9 @@ a:visited {
   color: inherit;
 }
 
-a.underline {
-  @apply no-underline border-black border-b-2;
+.underline {
+  @apply no-underline border-black border-b;
+  padding-bottom: 1px;
 
   &.text-green-dark {
     @apply border-green-dark;
@@ -29,5 +30,12 @@ a.underline {
 
   &.text-green-light {
     @apply border-green-light;
+  }
+}
+
+@screen md {
+  .underline {
+    @apply border-b-2;
+    padding-bottom: 2px;
   }
 }

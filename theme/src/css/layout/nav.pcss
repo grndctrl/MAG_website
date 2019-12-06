@@ -22,11 +22,11 @@
   .nav-burger {
     @apply flex flex-col justify-between;
     font-size: inherit;
-    width: $burger-width;
-    height: $burger-height;
+    width: $burger-width-mobile;
+    height: $burger-height-mobile;
     span {
       @apply w-full self-end;
-      height: 3px;
+      height: 2px;
       transition: $medium easeOutCirc;
     }
 
@@ -42,15 +42,16 @@
     .nav-menu {
       left: 0;
     }
+
     .nav-burger {
       span {
         @apply bg-white;
         margin: 0 !important;
         &:first-child {
-          transform: translateY(calc($burger-height / 2 - 1.5px)) rotate(45deg);
+          transform: translateY(calc($burger-height-mobile / 2 - 1.5px)) rotate(45deg);
         }
         &:last-child {
-          transform: translateY(calc($burger-height / -2 + 1.5px)) rotate(-45deg);
+          transform: translateY(calc($burger-height-mobile / -2 + 1.5px)) rotate(-45deg);
         }
 
         &:not(:first-child):not(:last-child) {
@@ -75,6 +76,32 @@
         .nav-main:not(.active) {
       .nav-burger span {
         @apply bg-green-dark;
+      }
+    }
+  }
+}
+
+@screen md {
+  .nav-main {
+    .nav-burger {
+      span {
+        height: 3px;
+      }
+      width: $burger-width;
+      height: $burger-height;
+    }
+  }
+
+  &.active {
+    .nav-burger {
+      span {
+        &:first-child {
+          transform: translateY(calc($burger-height / 2 - 1.5px)) rotate(45deg);
+        }
+
+        &:last-child {
+          transform: translateY(calc($burger-height / -2 + 1.5px)) rotate(-45deg);
+        }
       }
     }
   }

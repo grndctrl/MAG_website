@@ -162,12 +162,12 @@ class MagArchitecten extends Timber\Site
 
     public function load_scripts()
     {
-      wp_enqueue_style('theme', get_template_directory_uri() . '/css/theme.css');
-      wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css');
-      wp_enqueue_script('theme', get_template_directory_uri() . '/js/theme.js', array(), time(), true);
-      wp_enqueue_script('chunks', get_template_directory_uri() . '/js/chunks.js', array(), time(), true);
-      wp_enqueue_script('head', get_template_directory_uri() . '/js/head.js', array(), time(), false);
-  }
+        wp_enqueue_style('theme', get_template_directory_uri() . '/css/theme.css');
+        wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css');
+        wp_enqueue_script('theme', get_template_directory_uri() . '/js/theme.js', array(), time(), true);
+        wp_enqueue_script('chunks', get_template_directory_uri() . '/js/chunks.js', array(), time(), true);
+        wp_enqueue_script('head', get_template_directory_uri() . '/js/head.js', array(), time(), false);
+    }
 
     public function load_admin_scripts()
     {
@@ -182,6 +182,7 @@ class MagArchitecten extends Timber\Site
     {
         $twig->addExtension(new Twig_Extension_StringLoader());
         $twig->addFilter(new Twig_SimpleFilter('my_filter', array($this, 'my_filter')));
+        $twig->addFilter(new Twig_SimpleFilter('encrypt_email', array($this, 'encrypt_email')));
 
         return $twig;
     }
@@ -196,5 +197,53 @@ class MagArchitecten extends Timber\Site
 
         return $text;
     }
+
+    public function encrypt_email($text)
+    {
+        $address = strtolower($text);
+        $sserdda = strrev($address);
+
+        $coded = "";
+        $unmixedkey = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.@";
+        $cipher = str_shuffle($unmixedkey);
+        $shift = strlen($address);
+
+        $script = "<script type=\"text/javascript\" language=\"javascript\">\n" .
+               "<!-"."-\n";
+
+        for ($j=0; $j<strlen($address); $j++) {
+            if (strpos($cipher, $address{$j}) == -1) {
+                $chr = $address{$j};
+                $coded .= $address{$j};
+            } else {
+                $chr = (strpos($cipher, $address{$j}) + $shift) % strlen($cipher);
+                $coded .= $cipher{$chr};
+            }
+        }
+        
+
+        $script .= "\ncoded = \"" . $coded . "\"\n" .
+                " key = \"".$cipher."\"\n".
+                " shift=coded.length\n".
+                " link=\"\"\n".
+                " for (i=0; i<coded.length; i++) {\n" .
+                " if (key.indexOf(coded.charAt(i))==-1) {\n" .
+                " ltr = coded.charAt(i)\n" .
+                " link += (ltr)\n" .
+                " }\n" .
+                " else { \n".
+                " ltr = (key.indexOf(coded.charAt(i))- 
+                shift+key.length) % key.length\n".
+                " link += (key.charAt(ltr))\n".
+                " }\n".
+                " }\n".
+                " knil=link.split(\"\").reverse().join(\"\")\n".
+                "document.write(\"<a class='rtl underline text-white' href='mailto:\"+link+\"'>\"+knil+\"</a>\")\n" .
+                "\n".
+                "//-"."->\n" .
+                "<" . "/script><noscript><span class='rtl'>". $sserdda ."</span>" . "<"."/noscript>";
+        return $script;
+    }
 }
+
 new MagArchitecten();

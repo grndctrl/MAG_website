@@ -1,3 +1,7 @@
+body, html {
+  @apply font-light;
+}
+
 h1, h2, h3 {
   @apply leading-tight font-normal;
 }
@@ -7,6 +11,34 @@ p {
   letter-spacing: 0.03em;
 }
 
+.text-hero {
+  @apply text-4xl;
+}
+
+.text-xlarge {
+  @apply text-3xl;
+} 
+
+/* 
+.text-large {
+  @apply text-4xl;
+} 
+
+.text-quote {
+  @apply text-3xl;
+}  */
+
+.text-title {
+  @apply text-xl;
+} 
+
+.text-body {
+  @apply text-lg;
+}
+
+.text-small {
+  @apply text-base;
+} 
 
 @screen lg {
   .text-hero {
@@ -31,6 +63,10 @@ p {
 
   .text-body {
     @apply text-lg;
+  }
+
+  .text-small {
+    @apply text-base;
   } 
 }
 
@@ -57,5 +93,9 @@ p {
 
   .text-body {
     font-size: calc(100vw * 21 / 1600);
-  } 
+  }
+
+  .text-small {
+    font-size: calc(100vw * 16 / 1600);
+  }
 }

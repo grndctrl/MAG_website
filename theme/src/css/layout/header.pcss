@@ -4,6 +4,9 @@
 .header-main {
   &.dark {
     @apply text-green-dark;
+    .header-logo {
+      /* @apply bg-green-light; */
+    }
   }
 
   &.light {
@@ -11,8 +14,16 @@
   }
 }
 
-@screen lg {
-  .header-offset {
-    padding-top: 200px;
+.header-logo {
+  .svg-wrapper {
+    width: 82px;
+  }
+}
+
+@screen md {
+  .header-logo {
+    .svg-wrapper {
+      width: 97px;
+    }
   }
 }

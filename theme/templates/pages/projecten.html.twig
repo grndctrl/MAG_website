@@ -5,19 +5,20 @@
 {% block main %}
 
   <section class="section header-offset">
-    <div class="container">
+    <div class="container pt-10 md:pt-20">
       <div class="row">
-        <div class="col mx-1/12 w-10/12">
-          <h1 class="font-light text-xlarge mb-20">
+        <div class="col w-full md:mx-1/12 md:w-10/12">
+          <h1 class="font-light text-xlarge mb-6 md:mb-20">
             Onze Projecten
           </h1>
 
-          <div class="row flex-wrap">
+          <div class="ajax-wrapper row flex-wrap">
 
-            {% for item in 1..4 %}
+            {% for item in projects %}
 
-              <div class="col w-1/2 mb-20">
-                <a href="#">
+              <div class="col w-full md:w-1/2 mb-20">
+                <a href="{{ item.link }}">
+                  
                   <div class="cursor-bekijk-wrapper">
                     {% include "components/image.html.twig" with {
                       figure_class: 'landscape-wide'
@@ -30,17 +31,32 @@
 
                   <div class="mt-4">
                     <h3 class="text-title font-light">
-                      <span class="border-b-2 border-black">
-                        Lorem Ipsum
+                      <span class="underline">
+                        {{ item.title }}
                       </span>
                     </h3>
                   </div>
-                </div>
-              </a>
+
+                </a>
+              </div>
 
             {% endfor %}
 
           </div>
+
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col w-full mb-6 md:mx-1/12 md:w-10/12 md:mb-20">
+
+          {% if projects.pagination.next %}
+            <button class="ajax-load-more text-body font-light underline" data-ajax-wrapper="ajax-wrapper" data-ajax-url="{{ projects.pagination.next.link }}">
+              Meer projecten laden
+            </button>
+          {% endif %}
+
         </div>
       </div>
     </div>
