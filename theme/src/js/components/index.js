@@ -6,5 +6,6 @@ import { cursorBekijk } from './cursor-bekijk'
 import { slider } from './slider'
 import { ajaxModule } from './ajax-module'
 import { sliderMobile } from './slider-mobile'
+import { lazyloader } from './lazyloader'
 
-export { ajaxModule, scrollAnchors, images, dummyModule, expander, cursorBekijk, slider, sliderMobile }
+export { lazyloader, ajaxModule, scrollAnchors, images, dummyModule, expander, cursorBekijk, slider, sliderMobile }

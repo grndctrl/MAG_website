@@ -37,6 +37,7 @@ class AjaxModule extends CoreModule {
       })
 
       eventBus.$emit('cursor-bekijk-reinit')
+      eventBus.$emit('lazyload-images')
     }, error => {
       console.log('ajax error', error)
     })

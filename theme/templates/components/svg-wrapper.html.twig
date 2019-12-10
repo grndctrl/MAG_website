@@ -1,7 +1,12 @@
 
-{% set calc_width = "width: calc(100vw * " ~ width ~ " / 1440)" %}
+{% if width %}
+  {% set calc_width = "width: calc(100vw * " ~ width ~ " / 1440)" %}
+{% else %}
+  {% set calc_width = "100%" %}
+{% endif %}
+
 {% set path = "components/" ~ component ~ ".svg.twig" %}
 
-<div class="svg-wrapper" style="{{ calc_width }}">
+<div class="svg-wrapper {{ class|join(' ') }}" style="{{ calc_width }}">
   {% include path %}
 </div>

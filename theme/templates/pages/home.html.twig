@@ -4,15 +4,27 @@
 
 {% block main %}
 
-  <section class="header-offset pb-64 min-h-screen bg-green-dark text-green-light">
+  <section class="header-offset pb-64 lg:min-h-screen bg-green-dark text-green-light">
     <div class="container pt-16 md:pt-20">
 
       <div class="row">
-        <div class="col w-9/12 hidden md:block">
-          {% include "components/gebouw-van.svg.twig" %}
+        <div class="col w-9/12 hidden lg:block">
+          {% include "components/svg-wrapper.twig" with {
+            component: 'gebouw-van'
+          } %}
+          {# {% include "components/gebouw-van.svg.twig" %} #}
         </div>
-        <div class="col w-full md:hidden">
-          {% include "components/gebouw-van_mobile.svg.twig" %}
+        <div class="col w-full lg:hidden">
+          {# {% include "components/gebouw-van_mobile.svg.twig" %} #}
+          {% include "components/svg-wrapper.html.twig" with {
+            component: 'gebouw-van_mobile',
+            class: ['md:hidden']
+          } %}
+
+          {% include "components/svg-wrapper.html.twig" with {
+            component: 'gebouw-van_tablet',
+            class: ['hidden', 'md:block']
+          } %}
         </div>
       </div>
 
@@ -36,7 +48,7 @@
             </a>
           </p>
         </div>
-        <div class="col w-full md:mx-1/12 md:w-4/12">
+        <div class="col w-full md:ml-1/12 md:w-5/12 lg:mx-1/12 lg:w-4/12">
           {% include "components/image.html.twig" with {
             figure_class: 'portrait-wide'
           } %}
@@ -56,27 +68,33 @@
     <div class="container">
       <div class="row items-end">
 
-        <div class="col w-full md:ml-1/12 md:w-6/12">
-          <div class="w-full hidden md:block pb-16">
-            {% include "components/ontwerpen-begint-bij.svg.twig" %}
-          </div>
-          <div class="w-full md:hidden pb-16">
-            {% include "components/ontwerpen-begint-bij_mobile.svg.twig" %}
+        <div class="col w-full lg:ml-1/12 md:w-6/12">
+          <div class="w-full pb-8 lg:pb-16 md:-mt-32 md:pt-3 lg:mt-0 lg: pt-0">
+            {% include "components/svg-wrapper.html.twig" with {
+              component: 'ontwerpen-begint-bij_mobile',
+              class: ['md:hidden']
+            } %}
+            {% include "components/svg-wrapper.html.twig" with {
+              component: 'ontwerpen-begint-bij_tablet',
+              class: ['hidden', 'md:block', 'lg:hidden']
+            } %}
+            {% include "components/svg-wrapper.html.twig" with {
+              component: 'ontwerpen-begint-bij',
+              class: ['hidden', 'lg:block']
+            } %}
           </div>
 
           <a class="text-body text-green-dark underline" href="#">Meer over ons</a>
-
         </div>
-        <div class="col w-full md:w-4/12">
 
+        <div class="col w-full md:w-6/12 lg:w-4/12">
           <p class="hidden md:block text-body">
             Architectuur zien wij als een gebouw van stenen en een gebouw van mensen.
           </p>
 
-          <p class="pt-20 md:pt-16">
+          <p class="pt-20 md:pt-8 lg:pt-16">
             <a class="text-xl md:text-lg text-green-dark underline" href="#">Bekijk onze projecten</a>
           </p>
-
         </div>
 
       </div>

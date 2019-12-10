@@ -4,15 +4,21 @@
 
 {% block main %}
 
-  <section class="header-offset">
-    <div class="container pt-20">
+  <section class="section header-offset">
+    <div class="container pt-10 md:pt-20">
 
       <div class="row items-start">
-        <div class="col ml-1/12 w-6/12">
+        <div class="col w-full mb-10 md:ml-1/12 md:w-6/12 md:mb-0">
 
           {% include "components/svg-wrapper.html.twig" with {
             component: 'ontwerpen-begint-bij-2',
-            width: 679
+            width: 679,
+            class: ['hidden', 'lg:block']
+          } %}
+
+          {% include "components/svg-wrapper.html.twig" with {
+            component: 'ontwerpen-begint-bij_mobile',
+            class: ['lg:hidden']
           } %}
 
           {% include "components/expander.html.twig" with {
@@ -21,7 +27,7 @@
 
         </div>
 
-        <div class="col w-3/12 mx-1/12 mt-1/12">
+        <div class="col w-full md:w-4/12 md:ml-1/12 md:mt-1/12 lg:w-3/12 lg:mx-1/12">
 
           {% include "components/image.html.twig" with {
             figure_class : "portrait"
@@ -33,11 +39,11 @@
     </div>
   </section>
 
-  <section class="">
+  <section class="section md:-mt-20">
     <div class="container">
 
-      <div class="row items-start">
-        <div class="col w-5/12">
+      <div class="row flex-col-reverse md:flex-row items-start">
+        <div class="col w-full md:w-5/12">
 
           {% include "components/image.html.twig" with {
             figure_class : "landscape"
@@ -45,12 +51,18 @@
 
         </div>
 
-        <div class="col w-5/12 mx-1/12 mt-2/12">
+        <div class="col w-full mb-10 md:w-5/12 md:mx-1/12 md:mt-2/12 md:mb-0">
           <div class="flex flex-col items-end">
             <div>
               {% include "components/svg-wrapper.html.twig" with {
                 component: 'wij-zorgen-voor',
-                width: 490
+                width: 490,
+                class: ['hidden', 'md:block']
+              } %}
+
+              {% include "components/svg-wrapper.html.twig" with {
+                component: 'wij-zorgen-voor_mobile',
+                class: ['md:hidden']
               } %}
 
               {% include "components/expander.html.twig" with {
@@ -65,25 +77,29 @@
     </div>
   </section>
 
-  <section class="mt-12">
+  <section class="section">
     <div class="container">
 
-      <div class="row items-start">
-        <div class="col w-9/12 ml-1/12">
+      <div class="row flex-col-reverse md:flex-row items-start">
+        <div class="col w-full md:w-10/12 md:ml-1/12 lg:w-9/12">
 
           {% include "components/image.html.twig" with {
             figure_class : "landscape"
           } %}
 
         </div>
-      </div>
 
-      <div class="row my-32">
-        <div class="col w-8/12 mx-2/12">
+        <div class="col w-full mb-10 md:w-8/12 md:mx-2/12 md:mt-1/12 md:mb-0">
 
           {% include "components/svg-wrapper.html.twig"  with { 
             component: "samen-komen",
-            width: 579
+            width: 579,
+            class: ['hidden', 'md:block']
+          } %}
+
+          {% include "components/svg-wrapper.html.twig"  with { 
+            component: "samen-komen_mobile",
+            class: ['md:hidden']
           } %}
 
           {% include "components/expander.html.twig" with {
@@ -96,28 +112,31 @@
     </div>
   </section>
 
-  <section class="section bg-white">
-    <div class="container mt-10 mb-20">
-      <div class="row mb-10">
-        <div class="col mx-1/12 text-title">Partners</div>
-      </div>
+  <section class="section md:bg-white">
+    <div class="container mt-10 md:mb-20">
+
       <div class="row items-start">
 
-        <div class="col w-4/12 ml-1/12 text-body">
+        <div class="col text-body w-full md:w-8/12 lg:w-4/12 lg:ml-1/12">
           <p class="mr-8">
+            Mag Architecten bestaat uit Magdaleen Kroese / Ted van der Velden / Manja Adriaens.
+          </p>
+          <h2 class="mt-12 mb-6 font-light text-title">Partners</h2>
+          <p>
             MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
             <br><br>
-            MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
+            In nauwe samenwerking met<br>
+            <a href="#" class="font-normal underline" target="_blank" rel="noopener noreferrer">Stichting Kilimanjaro Wonen</a> 
             <br><br>
-            In nauwe samenwerking met Stichting Kilimanjaro Wonen
+            Samenwerkings verband<br>
+            <a href="#" class="font-normal underline" target="_blank" rel="noopener noreferrer">KdV architectuur</a> 
             <br><br>
-            Samenwerkings verband KdV architectuur
-            <br><br>
-            Collegiale samenwerking Von Bergh Bouwadvies
+            Collegiale samenwerking<br>
+            <a href="#" class="font-normal underline" target="_blank" rel="noopener noreferrer">Von Bergh Bouwadvies</a> 
           </p>
         </div>
 
-        <div class="col w-7/12">
+        <div class="col hidden lg:block w-7/12">
 
           {% include "components/image.html.twig" with {
             figure_class : "landscape"

@@ -4,15 +4,21 @@
 
 {% block main %}
 
-  <section class="header-offset pb-40">
-    <div class="container pt-20">
+  <section class="section header-offset">
+    <div class="container pt-10 md:pt-20">
 
       <div class="row">
-        <div class="col w-8/12 mx-2/12">
+        <div class="col w-full md:w-8/12 md:mx-2/12">
 
           {% include "components/svg-wrapper.html.twig" with {
             component: 'iedereen-heeft-ideeen',
-            width: 724
+            width: 724,
+            class: ['hidden', 'md:block']
+          } %}
+
+          {% include "components/svg-wrapper.html.twig" with {
+            component: 'iedereen-heeft-ideeen_mobile',
+            class: ['md:hidden']
           } %}
 
         </div>
@@ -22,9 +28,9 @@
   </section>
 
   <section class="section text-body">
-    <div class="container">
+    <div class="container md:pt-32">
       <div class="row">
-        <div class="col w-5/12">
+        <div class="col w-full md:w-5/12">
           <p>
             <span class="font-normal">Bel ons</span><br>
             <a class="underline" href="#">040 29 61 166</a><br>
@@ -38,7 +44,7 @@
             <a class="underline" href="#">Google maps</a>
           </p>
         </div>
-        <div class="col w-7/12">
+        <div class="col w-full mt-20 mb-10 md:my-0 md:w-7/12">
           {% include "components/image.html.twig" with {
             figure_class : "landscape"
           } %}

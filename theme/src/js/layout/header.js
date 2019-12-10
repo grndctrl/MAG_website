@@ -27,6 +27,7 @@ class Header extends CoreModule {
       events.push(
         new CoreEventListener('unpin-header', () => {
           this.unpin()
+          this.showLogo()
         })
       )
 

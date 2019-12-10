@@ -1,7 +1,7 @@
 {% if image is not defined %}
 
   <figure class="{{ figure_class|join(' ') }}">
-    <img src="https://placehold.it/2000x1000" alt="placeholder">
+    <img class="lazy" src="https://placehold.it/20x10" data-src="https://placehold.it/2000x1000" alt="placeholder">
   </figure>
 
 {% else %}

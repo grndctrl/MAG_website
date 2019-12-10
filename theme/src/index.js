@@ -4,7 +4,7 @@ import 'zenscroll'
 
 import { core } from './js/core'
 import { header, nav, footer, barbaManager } from './js/layout'
-import { images, scrollAnchors, expander, cursorBekijk, slider, sliderMobile, ajaxModule } from './js/components'
+import { images, scrollAnchors, expander, cursorBekijk, slider, sliderMobile, ajaxModule, lazyloader } from './js/components'
 
 (function() {
   core.attach(header, { element: document.querySelector('.header-main') })
@@ -20,6 +20,7 @@ import { images, scrollAnchors, expander, cursorBekijk, slider, sliderMobile, aj
   core.attach(slider, {}, true)
   core.attach(sliderMobile, {}, true)
   core.attach(ajaxModule, {target: '.ajax-load-more'}, true)
+  core.attach(lazyloader, {target: '.lazy'}, true)
 
   core.init()
 })()

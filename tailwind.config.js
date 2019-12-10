@@ -40,6 +40,9 @@ module.exports = {
       'transparent': 'transparent'
     },
     extend: {
+      minHeight: {
+        'screen-width': '100vw'
+      },
       spacing: {
         '1/24': '4.166667%',
         '1/12': '8.33333%',
@@ -53,7 +56,7 @@ module.exports = {
         '9/12': '75%',
         '10/12': '83.33333%',
         '11/12': '91.66667%',
-        full: '100%'
+        'full': '100%'
       }
     }
   },
