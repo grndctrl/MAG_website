@@ -47,6 +47,7 @@
     "postcss-object-fit-images": "^1.1.2",
     "postcss-scss": "^2.0.0",
     "scrollmagic": "^2.0.7",
+    "serialize-javascript": "^2.1.2",
     "shortid": "^2.2.14",
     "slug": "^1.1.0",
     "tailwindcss": "^1.0.5",
