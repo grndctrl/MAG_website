@@ -60,3 +60,26 @@
         }
     }
 }
+
+.project-header-text {
+    p {
+        @apply font-light leading-none;
+    }
+    strong {
+        @apply font-normal;
+    }
+}
+
+.quote-wrapper {
+  @apply relative bg-grey;
+
+  &.landscape-wide::after {
+    content: '';
+    display: block;
+    padding-top: 62.4%;
+  }
+
+  .quote-content {
+      @apply absolute inset-0;
+  }
+}

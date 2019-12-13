@@ -117,19 +117,18 @@ class MagArchitecten extends Timber\Site
             }
         }
 
+        $args = array(
+            'post_type' => 'project'
+          );
+        $projects = Timber::get_posts($args);
+        $context['projects'] = $projects;
+
         return $context;
     }
 
     public function timmy_sizes($sizes)
     {
         return array(
-            'lazy' => array(
-                'resize' => array(32),
-                'oversize' => array(
-                    'allow' => false,
-                    'style_attr' => false,
-                ),
-            ),
             'thumbnail' => array(
                 'resize' => array(200, 200),
                 'oversize' => array(
@@ -137,6 +136,7 @@ class MagArchitecten extends Timber\Site
                     'style_attr' => false,
                 ),
             ),
+
             'portrait' => array(
                 'resize' => array(720),
                 'srcset' => array(0.5, 2),
@@ -146,10 +146,19 @@ class MagArchitecten extends Timber\Site
                     'style_attr' => false,
                 ),
             ),
+
             'landscape' => array(
                 'resize' => array(1280),
                 'srcset' => array(0.5, 2),
                 'sizes' => '100vw',
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+
+            'lazy' => array(
+                'resize' => array(32),
                 'oversize' => array(
                     'allow' => false,
                     'style_attr' => false,

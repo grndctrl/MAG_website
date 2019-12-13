@@ -13,20 +13,31 @@
           </h1>
 
           <div class="ajax-wrapper row flex-wrap">
-
-            {% for item in projects %}
-                {% set delay = 0 %}
+            {% for project in projects %}
+              {% set delay = 0 %}
               {% if loop.index0 is odd %}
                 {% set delay = 200 %}
               {% endif %}
-              
+
               <div class="col anim-move-in w-full md:w-1/2 mb-20" data-anim-delay="{{ delay }}">
-                <a href="{{ item.link }}">
-                  
+                <a href="{{ project.link }}">
+
                   <div class="cursor-bekijk-wrapper">
-                    {% include "components/image.html.twig" with {
-                      figure_class: 'landscape-wide'
-                    } %}
+                    {% if project.meta("use_quote") %}
+                      <div class="quote-wrapper landscape-wide">
+                        <div class="quote-content text-quote leading-tight p-8 flex items-start">
+                          <blockquote>
+                            {{ project.meta('quote') }}
+                          </blockquote>
+                        </div>
+                      </div>
+
+                    {% else %}
+                      {% include "components/image.html.twig" with {
+                        figure_class: 'landscape-wide',
+                        image: project.meta('header').image
+                      } %}
+                    {% endif %}
 
                     <div class="cursor-bekijk text-body">
                       <span class="">bekijk</span>
@@ -36,7 +47,7 @@
                   <div class="mt-4">
                     <h3 class="text-title font-light">
                       <span class="underline">
-                        {{ item.title }}
+                        {{ project.title }}
                       </span>
                     </h3>
                   </div>
@@ -47,7 +58,6 @@
             {% endfor %}
 
           </div>
-
 
         </div>
       </div>

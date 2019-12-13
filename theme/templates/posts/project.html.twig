@@ -9,7 +9,9 @@
         <div class="col w-full lg:w-10/12 lg:mx-1/12">
 
           {% include "components/image.html.twig" with {
-            figure_class: 'landscape-wide'
+            figure_class: 'landscape-wide',
+            image: post.meta('header').image,
+            size: 'landscape'
           } %}
 
           <h1 class="font-light text-title mt-4 mb-10 lg:mb-20">
@@ -21,9 +23,9 @@
 
       <div class="row">
         <div class="col anim-move-in md:w-10/12 md:mx-1/12 lg:w-8/12 lg:mx-2/12 text-xlarge leading-none">
-          Inpassen in
-          <span class="font-normal">natuur</span><br>
-          en omgeving
+          <div class="project-header-text">
+            {{ post.meta('header').text }}
+          </div>
         </div>
       </div>
 
@@ -34,23 +36,15 @@
         <div class="slider-mobile swiper-container">
           <div class="swiper-wrapper">
 
-            <div class="swiper-slide border-box border-box w-auto h-full">
-              <figure class="slide-image">
-                <img src="http://placehold.it/400x600" alt="">
-              </figure>
-            </div>
+            {% for slide in post.meta("slider") %}
 
-            <div class="swiper-slide border-box w-auto h-full">
-              <figure class="slide-image">
-                <img src="http://placehold.it/800x600" alt="">
-              </figure>
-            </div>
+              <div class="swiper-slide border-box border-box w-auto h-full">
+                <figure class="slide-image">
+                  <img src="{{ Image(slide.image).src }}" alt="">
+                </figure>
+              </div>
 
-            <div class="swiper-slide border-box w-auto h-full">
-              <figure class="slide-image">
-                <img src="http://placehold.it/400x200" alt="">
-              </figure>
-            </div>
+            {% endfor %}
 
           </div>
         </div>
@@ -78,11 +72,11 @@
           <div class="row text-small">
             <div class="col w-full md:w-1/2">
 
-              {% for item in 1..6 %}
+              {% for item in post.meta("info").details %}
 
                 <div class="mb-10 anim-move-in" data-anim-trigger="#anim-list-trigger" data-anim-delay="{{ loop.index0 * 50 }}" data-anim-hook="66">
-                  <span class="font-normal">info</span><br>
-                  e.v.t. extra informatie
+                  <span class="font-normal">{{ item.subject }}</span><br>
+                  {{ item.text }}
                 </div>
 
                 {% if loop.index == 3 %}
@@ -100,9 +94,7 @@
       <div class="col anim-move-in w-full lg:ml-1/12 lg:w-5/12 lg:mr-1/12 text-body">
         <div class="container lg:pl-0">
           <p>
-            Belangrijk uitgangspunt tijdens de architectenselectie was de eis dat het plan moest passen binnen het masterplan van Juurlink & Geluk voor de Genneper Parken. Rekening houden met bestaande monumentale bomen, zichtassen binnen het plan en daarmee een relatie met de Sporthogeschool. Qua vormgeving streven naar een eenvoudig volume met transparante onderbouw en zware ‘pet’.<br>
-            <br>
-            Omdat het oppervlak maar bescheiden kon zijn en aan drie zijde uitzicht naar de tennisbanen gewenst was is ervoor gekozen de ondersteunende functies aan de vrijwel blinde noordgevel te plaatsen. Alleen de vergaderruimte piept er als een oog doorheen. Het hele gebouw ligt op een plateau van 80 cm. hoog voor goed zicht vanaf een ruim terras.
+            {{ post.meta('info').description }}
           </p>
         </div>
       </div>
@@ -116,28 +108,31 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
           <!-- Slides -->
-          <div class="swiper-slide border-box border-box px-1/24 w-auto h-full">
-            <figure class="slide-image">
-              <img src="http://placehold.it/400x600" alt="">
-            </figure>
-          </div>
+          {% for slide in post.meta("slider") %}
 
-          <div class="swiper-slide border-box px-1/24 w-auto h-full">
-            <figure class="slide-image">
-              <img src="http://placehold.it/800x600" alt="">
-            </figure>
-          </div>
+            <div class="swiper-slide border-box border-box px-1/24  w-auto h-full">
+              <figure class="slide-image">
+                <img src="{{ Image(slide.image).src }}" alt="">
+              </figure>
 
-          <div class="swiper-slide border-box px-1/24 w-auto h-full">
-            <figure class="slide-image">
-              <img src="http://placehold.it/400x200" alt="">
-            </figure>
-          </div>
+              {% if slide.footnote %}
+                <div class="absolute bg-white h-8 bottom-0 left-0 right-0 flex justify-center items-end">
+                  <div class="text-small">
+                    {{ slide.footnote }}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+
+          {% endfor %}
+
         </div>
 
         <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev">
+          <span class="underline">vorige</span></div>
+        <div class="swiper-button-next">
+          <span class="underline">volgende</span></div>
 
       </div>
 
@@ -154,9 +149,14 @@
               <a href="{{ prev_project.link }}">
 
                 <div class="cursor-bekijk-wrapper">
-                  {% include "components/image.html.twig" with {
-                      figure_class: 'landscape-wide'
+                  {% if prev_project.meta("use_quote") %}
+                    {{ prev_project.meta('quote') }}
+                  {% else %}
+                    {% include "components/image.html.twig" with {
+                      figure_class: 'landscape-wide',
+                      image: prev_project.meta('header').image
                     } %}
+                  {% endif %}
 
                   <div class="cursor-bekijk text-body">
                     <span class="">bekijk</span>
@@ -178,9 +178,21 @@
               <a href="{{ next_project.link }}">
 
                 <div class="hidden md:block cursor-bekijk-wrapper">
-                  {% include "components/image.html.twig" with {
-                      figure_class: 'landscape-wide'
+                  {% if next_project.meta("use_quote") %}
+                    <div class="quote-wrapper landscape-wide">
+                      <div class="quote-content text-quote leading-tight p-8 flex items-start">
+                        <blockquote>
+                          {{ next_project.meta('quote') }}
+                        </blockquote>
+                      </div>
+                    </div>
+
+                  {% else %}
+                    {% include "components/image.html.twig" with {
+                      figure_class: 'landscape-wide',
+                      image: next_project.meta('header').image
                     } %}
+                  {% endif %}
 
                   <div class="cursor-bekijk text-body">
                     <span class="-mt-2">bekijk</span>
