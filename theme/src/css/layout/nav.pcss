@@ -83,6 +83,10 @@
 
 @screen lg {
   .nav-main {
+    .nav-burger-wrapper {
+      width: 97px;
+      height: 65px;
+    }
     .nav-burger {
       span {
         height: 3px;
@@ -90,17 +94,17 @@
       width: $burger-width;
       height: $burger-height;
     }
-  }
 
-  &.active {
-    .nav-burger {
-      span {
-        &:first-child {
-          transform: translateY(calc($burger-height / 2 - 1.5px)) rotate(45deg);
-        }
+    &.active {
+      .nav-burger {
+        span {
+          &:first-child {
+            transform: translateY(calc($burger-height / 2 - 1.5px)) rotate(45deg);
+          }
 
-        &:last-child {
-          transform: translateY(calc($burger-height / -2 + 1.5px)) rotate(-45deg);
+          &:last-child {
+            transform: translateY(calc($burger-height / -2 + 1.5px)) rotate(-45deg);
+          }
         }
       }
     }

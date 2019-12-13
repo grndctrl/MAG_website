@@ -30,23 +30,30 @@
   <section class="section text-body">
     <div class="container md:pt-32">
       <div class="row">
-        <div class="col w-full md:w-5/12">
-          <p>
+        <div id="anim-trigger-list" class="col w-full md:w-5/12">
+          <ul>
+          <li class="anim-move-in mb-6" data-anim-trigger="#anim-trigger-list" data-anim-delay="0">
             <span class="font-normal">Bel ons</span><br>
-            <a class="underline" href="#">040 29 61 166</a><br>
-            <br>
+            <a class="underline" href="tel:{{ global_contact.meta('phone') }}">{{ global_contact.meta('phone') }}</a>
+          </li>
+
+          <li class="anim-move-in mb-6" data-anim-trigger="#anim-trigger-list" data-anim-delay="100">
             <span class="font-normal">Stuur ons een bericht</span><br>
-            <a class="underline" href="#">info@mag-architecten.nl</a><br>
-            <br>
+            {{ encrypt_email(global_contact.meta('email'), 'underline') }}
+          </li>
+
+          <li class="anim-move-in" data-anim-trigger="#anim-trigger-list" data-anim-delay="200">
             <span class="font-normal">Bezoek ons op</span><br>
-            Patrijsstraat 15<br>
-            5613 EK Eindhoven<br>
-            <a class="underline" href="#">Google maps</a>
-          </p>
+            {{ global_contact.meta('address') }}
+            <br>
+            <a class="underline" target="_blank" href="{{ post.meta('google_maps_url')}}">Google maps</a>
+          </li>
+          </ul>
         </div>
         <div class="col w-full mt-20 mb-10 md:my-0 md:w-7/12">
           {% include "components/image.html.twig" with {
-            figure_class : "landscape"
+            figure_class : "landscape",
+            image: post.meta('image')
           } %}
         </div>
       </div>

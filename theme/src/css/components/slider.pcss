@@ -553,6 +553,26 @@ button.swiper-pagination-bullet {
   }
 }
 
+.slider {
+  height: calc(100vw - 160px);
+
+  .swiper-slide {
+    @apply flex justify-center items-center;
+  }
+
+  .slide-image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@screen lg {
+  .slider {
+    height: calc(100vh - 160px);
+  }
+}
+
 .slider-mobile {
   height: 50vh;
 

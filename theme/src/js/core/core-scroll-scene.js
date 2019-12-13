@@ -38,7 +38,6 @@ class CoreScrollScene {
     })
     this.scene.on('leave', this.leave)
 
-    console.log(this.scene)
     scrollController.addScene(this.scene)
   }
 

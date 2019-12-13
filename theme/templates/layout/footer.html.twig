@@ -13,8 +13,7 @@
           </p>
           <p class="mb-10">
             <a href="tel:{{ global_contact.meta('phone') }}">{{ global_contact.meta('phone') }}</a><br>
-            {# <a class="text-white underline" href="mailto:{{ global_contact.meta('email') }}">{{ global_contact.meta('email') }}</a> #}
-            {{ global_contact.meta('email')|encrypt_email }}
+            {{ encrypt_email(global_contact.meta('email'), 'underline text-white') }}
           </p>
           <p class="hidden md:block text-base">
             &copy; 2019 MAG Architecten

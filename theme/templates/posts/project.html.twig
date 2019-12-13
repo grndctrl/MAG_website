@@ -2,7 +2,7 @@
 
 {% block main %}
 
-  <section class="section header-offset">
+  <section class="header-offset lg:pb-20">
     <div class="container hidden md:block">
 
       <div class="row">
@@ -12,7 +12,7 @@
             figure_class: 'landscape-wide'
           } %}
 
-          <h1 class="font-light text-title mt-4 mb-20">
+          <h1 class="font-light text-title mt-4 mb-10 lg:mb-20">
             {{ post.title }}
           </h1>
 
@@ -20,7 +20,7 @@
       </div>
 
       <div class="row">
-        <div class="col md:w-10/12 md:mx-1/12 lg:w-8/12 lg:mx-2/12 text-xlarge leading-none">
+        <div class="col anim-move-in md:w-10/12 md:mx-1/12 lg:w-8/12 lg:mx-2/12 text-xlarge leading-none">
           Inpassen in
           <span class="font-normal">natuur</span><br>
           en omgeving
@@ -69,18 +69,18 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section overflow-x-hidden">
 
-    <div class="row flex-col-reverse lg:flex-row">
+    <div class="row flex-col-reverse lg:flex-row lg:pb-20">
 
-      <div class="col w-full bg-white md:bg-transparent mt-10 lg:mt-0 lg:ml-1/12 lg:w-4/12">
+      <div id="anim-list-trigger" class="col w-full bg-white md:bg-transparent mt-10 lg:mt-0 lg:ml-1/12 lg:w-4/12">
         <div class="container pt-10 md:pt-0 lg:pr-0">
           <div class="row text-small">
             <div class="col w-full md:w-1/2">
 
               {% for item in 1..6 %}
 
-                <div class="mb-10">
+                <div class="mb-10 anim-move-in" data-anim-trigger="#anim-list-trigger" data-anim-delay="{{ loop.index0 * 50 }}" data-anim-hook="66">
                   <span class="font-normal">info</span><br>
                   e.v.t. extra informatie
                 </div>
@@ -97,7 +97,7 @@
         </div>
       </div>
 
-      <div class="col w-full lg:ml-1/12 lg:w-5/12 lg:mr-1/12 text-body">
+      <div class="col anim-move-in w-full lg:ml-1/12 lg:w-5/12 lg:mr-1/12 text-body">
         <div class="container lg:pl-0">
           <p>
             Belangrijk uitgangspunt tijdens de architectenselectie was de eis dat het plan moest passen binnen het masterplan van Juurlink & Geluk voor de Genneper Parken. Rekening houden met bestaande monumentale bomen, zichtassen binnen het plan en daarmee een relatie met de Sporthogeschool. Qua vormgeving streven naar een eenvoudig volume met transparante onderbouw en zware ‘pet’.<br>
@@ -150,7 +150,7 @@
         <div class="col w-full lg:w-10/12 lg:mx-1/12">
           <h2 class="hidden md:block text-title font-light mt-20 mb-10">Andere projecten</h2>
           <div class="row md:mb-12">
-            <div class="col hidden md:block w-1/2 mb-20">
+            <div class="col anim-move-in hidden md:block w-1/2 mb-20">
               <a href="{{ prev_project.link }}">
 
                 <div class="cursor-bekijk-wrapper">
@@ -159,7 +159,7 @@
                     } %}
 
                   <div class="cursor-bekijk text-body">
-                    <span class="-mt-2">bekijk</span>
+                    <span class="">bekijk</span>
                   </div>
                 </div>
 
@@ -174,7 +174,7 @@
               </a>
             </div>
 
-            <div class="col w-full md:w-1/2 md:mb-20">
+            <div class="col anim-move-in w-full md:w-1/2 md:mb-20" data-anim-delay="200">
               <a href="{{ next_project.link }}">
 
                 <div class="hidden md:block cursor-bekijk-wrapper">

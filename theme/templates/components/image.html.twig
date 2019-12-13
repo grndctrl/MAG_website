@@ -5,9 +5,18 @@
   </figure>
 
 {% else %}
+  {% if size is not defined %}
+    {% set size = "landscape" %}
+  {% endif %}
+
+  {% set lazyload = image | get_timber_image_responsive("landscape", {
+    lazy_srcset: true,
+    lazy_src: true
+  }) %}
+  {% set lazypreload = image | get_timber_image("lazy") %}
 
   <figure class="{{ figure_class|join(' ') }}">
-    <img{{ image|get_timber_image_responsive(size) }}>
+    <img class="lazy" {{ lazypreload}} {{ lazyload }}>
   </figure>
 
 {% endif %}

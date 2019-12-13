@@ -1,4 +1,4 @@
-import debounce from 'lodash/debounce'
+import throttle from 'lodash/throttle'
 import shortid from 'shortid'
 //
 import { CoreModule } from './core-module'
@@ -7,7 +7,6 @@ import { CoreScrollScene } from './core-scroll-scene'
 import { config } from './config'
 import { eventBus } from './event-bus'
 import { scrollController } from './scroll-controller'
-import throttle from 'lodash/throttle'
 
 class Core {
   constructor() {
@@ -27,7 +26,6 @@ class Core {
     eventBus.$on('barba-before-enter', () => {
       this.modules.forEach((module) => {
         if (module.reinit) {
-          console.log("TCL: Core -> init -> module", module)
           module.destroy()
           module.init(module.options)
         }

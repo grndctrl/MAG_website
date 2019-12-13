@@ -8,28 +8,19 @@
 @import "./core/elements.pcss";
 @import "./core/fonts.pcss";
 /*  */
+/* purgecss start ignore */
 @import "./components/components.pcss";
 @import "./components/images.pcss";
 @import "./components/slider.pcss";
+/* purgecss end ignore */
 /*  */
+/* purgecss start ignore */
 @import "./layout/barba.pcss";
 @import "./layout/header.pcss";
 @import "./layout/main.pcss";
 @import "./layout/footer.pcss";
 @import "./layout/nav.pcss";
+/* purgecss end ignore */
 /*  */
 @import "./components/anime.pcss";
 /*  */
-@responsive {
-  .border-box {
-    box-sizing: border-box;
-  }
-  .content-box {
-    box-sizing: content-box;
-  }
-}
-
-.rtl {
-  unicode-bidi:bidi-override;
-  direction: rtl;
-}

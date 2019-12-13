@@ -37,3 +37,18 @@ figure.slide-image {
     object-fit: contain;
   }
 }
+
+img.lazy {
+  transform: scale(1.01);
+  filter: blur(10px);
+  transition: transform $short ease;
+
+  &.loaded {
+    transform: scale(1);
+    filter: none;
+  }
+}
+
+figure {
+  overflow: hidden;
+}

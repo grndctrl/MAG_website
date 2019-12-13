@@ -2,3 +2,23 @@
   @apply min-h-screen relative;
   flex: 1 0 auto;
 }
+
+@responsive {
+  .border-box {
+    box-sizing: border-box;
+  }
+  .content-box {
+    box-sizing: content-box;
+  }
+}
+
+.rtl {
+  unicode-bidi:bidi-override;
+  direction: rtl;
+}
+
+.wysiwyg {
+  p {
+    @apply mb-6;
+  }
+}

@@ -15,8 +15,12 @@
           <div class="ajax-wrapper row flex-wrap">
 
             {% for item in projects %}
-
-              <div class="col w-full md:w-1/2 mb-20">
+                {% set delay = 0 %}
+              {% if loop.index0 is odd %}
+                {% set delay = 200 %}
+              {% endif %}
+              
+              <div class="col anim-move-in w-full md:w-1/2 mb-20" data-anim-delay="{{ delay }}">
                 <a href="{{ item.link }}">
                   
                   <div class="cursor-bekijk-wrapper">
@@ -25,7 +29,7 @@
                     } %}
 
                     <div class="cursor-bekijk text-body">
-                      <span class="-mt-2">bekijk</span>
+                      <span class="">bekijk</span>
                     </div>
                   </div>
 
@@ -49,7 +53,7 @@
       </div>
 
       <div class="row">
-        <div class="col w-full mb-6 md:mx-1/12 md:w-10/12 md:mb-20">
+        <div class="col w-full mb-6 lg:mx-1/12 lg:w-10/12 lg:mb-20">
 
           {% if projects.pagination.next %}
             <button class="ajax-load-more text-body font-light underline" data-ajax-wrapper="ajax-wrapper" data-ajax-url="{{ projects.pagination.next.link }}">

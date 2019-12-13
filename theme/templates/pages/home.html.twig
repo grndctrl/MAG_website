@@ -4,12 +4,12 @@
 
 {% block main %}
 
-  <section class="header-offset pb-64 lg:min-h-screen bg-green-dark text-green-light">
+  <section class="header-offset pb-64 bg-green-dark text-green-light">
     <div class="container pt-16 md:pt-20">
 
       <div class="row">
         <div class="col w-9/12 hidden lg:block">
-          {% include "components/svg-wrapper.twig" with {
+          {% include "components/svg-wrapper.html.twig" with {
             component: 'gebouw-van'
           } %}
           {# {% include "components/gebouw-van.svg.twig" %} #}
@@ -35,28 +35,47 @@
 
   <section class="section -mt-48 md:-mt-40">
     <div class="container">
-      <h3 class="text-body text-xl text-green-light font-light mb-4">uitgelicht</h3>
+      <h3 class="text-title text-green-light font-light mb-4">uitgelicht</h3>
       <div class="row flex-wrap">
 
         <div class="col w-full mb-12 md:mb-0 md:w-6/12">
-          {% include "components/image.html.twig" with {
-            figure_class: 'landscape-wide'
-          } %}
-          <p class="text-title leading-loose">
-            <a class="underline" href="#">
-              Kavel F
-            </a>
-          </p>
+          <a href="{{ post.meta('uitgelicht')[0].project.link }}">
+            <div class="hidden md:block cursor-bekijk-wrapper">
+              {% include "components/image.html.twig" with {
+              figure_class: 'landscape-wide',
+              image: post.meta('uitgelicht')[0].image
+            } %}
+              <div class="cursor-bekijk text-body">
+                <span class="">bekijk</span>
+              </div>
+            </div>
+            <p class="text-title leading-loose">
+              <span class="underline">
+                {{ post.meta('uitgelicht')[0].project.title }}
+              </span>
+            </p>
+          </a>
         </div>
+
         <div class="col w-full md:ml-1/12 md:w-5/12 lg:mx-1/12 lg:w-4/12">
-          {% include "components/image.html.twig" with {
-            figure_class: 'portrait-wide'
-          } %}
-          <p class="text-title leading-loose">
-            <a class="underline" href="#">
-              CPO Akkerstraat
-            </a>
-          </p>
+          <a href="{{ post.meta('uitgelicht')[1].project.link }}">
+            <div class="hidden md:block cursor-bekijk-wrapper">
+              {% include "components/image.html.twig" with {
+              figure_class: 'portrait-wide',
+              image: post.meta('uitgelicht')[1].image,
+              size: 'portrait'
+            } %}
+              <div class="cursor-bekijk text-body">
+                <span class="-mt-2">bekijk</span>
+              </div>
+            </div>
+
+            <p class="text-title leading-loose">
+              <span class="underline">
+                {{ post.meta('uitgelicht')[1].project.title }}
+              </span>
+            </p>
+          </a>
         </div>
 
       </div>
@@ -79,12 +98,12 @@
               class: ['hidden', 'md:block', 'lg:hidden']
             } %}
             {% include "components/svg-wrapper.html.twig" with {
-              component: 'ontwerpen-begint-bij',
-              class: ['hidden', 'lg:block']
+              component: 'ontwerpen-begint-bij_anim',
+              class: ['hidden', 'lg:block', 'anim-svg-in']
             } %}
           </div>
 
-          <a class="text-body text-green-dark underline" href="#">Meer over ons</a>
+          <a class="text-body text-green-dark underline" href="{{ site.url }}/over-ons">Meer over ons</a>
         </div>
 
         <div class="col w-full md:w-6/12 lg:w-4/12">
@@ -93,7 +112,7 @@
           </p>
 
           <p class="pt-20 md:pt-8 lg:pt-16">
-            <a class="text-xl md:text-lg text-green-dark underline" href="#">Bekijk onze projecten</a>
+            <a class="text-xl md:text-lg text-green-dark underline" href="{{ site.url }}/projecten">Bekijk onze projecten</a>
           </p>
         </div>
 

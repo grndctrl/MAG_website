@@ -25,18 +25,21 @@ class AjaxModule extends CoreModule {
       data.innerHTML = result.data
       let content = data.querySelector(wrapper)
       let next = data.querySelector('.ajax-load-more')
-
+      
       if (next) {
         let button = document.querySelector('.ajax-load-more')
         button.setAttribute('data-ajax-url', next.getAttribute('data-ajax-url'))
+      } else {
+        let button = document.querySelector('.ajax-load-more')
+        button.style.display = 'none'
       }
-      console.log("TCL: AjaxModule -> onClick -> next", next)
 
       Array.from(content.children).forEach(child => {
         document.querySelector(wrapper).appendChild(child)
       })
 
       eventBus.$emit('cursor-bekijk-reinit')
+      eventBus.$emit('anim-reinit')
       eventBus.$emit('lazyload-images')
     }, error => {
       console.log('ajax error', error)

@@ -27,10 +27,12 @@
 
         </div>
 
-        <div class="col w-full md:w-4/12 md:ml-1/12 md:mt-1/12 lg:w-3/12 lg:mx-1/12">
+        <div class="col anim-move-in w-full md:w-4/12 md:ml-1/12 md:mt-1/12 lg:w-3/12 lg:mx-1/12" data-anim-direction="left">
 
           {% include "components/image.html.twig" with {
-            figure_class : "portrait"
+            figure_class : "portrait",
+            image: post.meta('image_1'),
+            size: 'portrait'
           } %}
 
         </div>
@@ -43,10 +45,11 @@
     <div class="container">
 
       <div class="row flex-col-reverse md:flex-row items-start">
-        <div class="col w-full md:w-5/12">
+        <div class="anim-move-in col w-full md:w-5/12" data-anim-direction="right" data-anim-hook="50">
 
           {% include "components/image.html.twig" with {
-            figure_class : "landscape"
+            figure_class : "landscape",
+            image: post.meta('image_2')
           } %}
 
         </div>
@@ -81,10 +84,11 @@
     <div class="container">
 
       <div class="row flex-col-reverse md:flex-row items-start">
-        <div class="col w-full md:w-10/12 md:ml-1/12 lg:w-9/12">
+        <div class="col anim-move-in w-full md:w-10/12 md:ml-1/12 lg:w-9/12">
 
           {% include "components/image.html.twig" with {
-            figure_class : "landscape"
+            figure_class : "landscape",
+            image: post.meta('image_3')
           } %}
 
         </div>
@@ -102,9 +106,11 @@
             class: ['md:hidden']
           } %}
 
-          {% include "components/expander.html.twig" with {
-            content : "lorem ipsum"
-          } %}
+          <div style="max-width: 800px">
+            {% include "components/expander.html.twig" with {
+              content : "lorem ipsum"
+            } %}
+          </div>
 
         </div>
       </div>
@@ -119,27 +125,19 @@
 
         <div class="col text-body w-full md:w-8/12 lg:w-4/12 lg:ml-1/12">
           <p class="mr-8">
-            Mag Architecten bestaat uit Magdaleen Kroese / Ted van der Velden / Manja Adriaens.
+            {{ post.meta('footer').text }}
           </p>
           <h2 class="mt-12 mb-6 font-light text-title">Partners</h2>
-          <p>
-            MAG Architecten heeft verschillende vaste samenwerkingpartners waarmee projecten worden opgezet en uitgevoerd.
-            <br><br>
-            In nauwe samenwerking met<br>
-            <a href="#" class="font-normal underline" target="_blank" rel="noopener noreferrer">Stichting Kilimanjaro Wonen</a> 
-            <br><br>
-            Samenwerkings verband<br>
-            <a href="#" class="font-normal underline" target="_blank" rel="noopener noreferrer">KdV architectuur</a> 
-            <br><br>
-            Collegiale samenwerking<br>
-            <a href="#" class="font-normal underline" target="_blank" rel="noopener noreferrer">Von Bergh Bouwadvies</a> 
-          </p>
+          <div class="wysiwyg">
+            {{ post.meta('footer').partners }}
+          </div>
         </div>
 
         <div class="col hidden lg:block w-7/12">
 
           {% include "components/image.html.twig" with {
-            figure_class : "landscape"
+            figure_class : "landscape",
+            image: post.meta('footer').image
           } %}
 
         </div>

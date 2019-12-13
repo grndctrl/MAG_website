@@ -45,9 +45,13 @@
     cursor: none;
 
     .cursor-bekijk {
-        @apply absolute top-0 left-0 bg-white rounded-full w-20 h-20 -ml-10 -mt-10 flex items-center justify-center;
-        transition: opacity $short ease;
+        @apply absolute top-0 left-0 bg-white rounded-full w-24 h-24 -ml-12 -mt-12 flex items-center justify-center;
         opacity: 0;
+
+        span {
+            display: inline-block;
+            margin-top: -1px;
+        }
     }
 
     &.active {

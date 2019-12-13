@@ -1,6 +1,5 @@
 import { CoreModule } from '../core'
-import Swiper from 'swiper'
-// import { debounce } from 'lodash'
+import Swiper from 'swiper/js/swiper.min.js'
 
 class SliderMobile extends CoreModule {
   init() {

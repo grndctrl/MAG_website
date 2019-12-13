@@ -1,11 +1,14 @@
 import { CoreModule, CoreScrollScene, CoreEventListener, eventBus } from '../core'
 import lozad from 'lozad'
+import anime from 'animejs'
 
 class Lazyloader extends CoreModule {
   init(options) {
     this.target = options.target || '.lazy'
 
-    this.observer = lozad(this.target)
+    this.observer = lozad(this.target, {
+      loaded: this.unblur
+    })
     this.observer.observe()
 
     const events = []
@@ -22,6 +25,9 @@ class Lazyloader extends CoreModule {
     return super.init()
   }
 
+  unblur(element) {
+    element.classList.add('loaded')
+  }
 
   destroy() {
     return super.destroy()

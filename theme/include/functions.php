@@ -123,18 +123,32 @@ class MagArchitecten extends Timber\Site
     public function timmy_sizes($sizes)
     {
         return array(
-            'portrait-50vw' => array(
-                'resize' => array(800, 1200),
-                'srcset' => array(0.5, 2, 3),
+            'lazy' => array(
+                'resize' => array(32),
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'thumbnail' => array(
+                'resize' => array(200, 200),
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
+            'portrait' => array(
+                'resize' => array(720),
+                'srcset' => array(0.5, 2),
                 'sizes' => '(min-width: 640px) 50vw, 100vw',
                 'oversize' => array(
                     'allow' => false,
                     'style_attr' => false,
                 ),
             ),
-            'landscape-100vw' => array(
-                'resize' => array(1600, 1066),
-                'srcset' => array(0.5, 2, 3),
+            'landscape' => array(
+                'resize' => array(1280),
+                'srcset' => array(0.5, 2),
                 'sizes' => '100vw',
                 'oversize' => array(
                     'allow' => false,
@@ -182,7 +196,8 @@ class MagArchitecten extends Timber\Site
     {
         $twig->addExtension(new Twig_Extension_StringLoader());
         $twig->addFilter(new Twig_SimpleFilter('my_filter', array($this, 'my_filter')));
-        $twig->addFilter(new Twig_SimpleFilter('encrypt_email', array($this, 'encrypt_email')));
+        // $twig->addFilter(new Twig_SimpleFilter('encrypt_email', array($this, 'encrypt_email')));
+        $twig->addFunction(new Twig_Function('encrypt_email', array($this, 'encrypt_email')));
 
         return $twig;
     }
@@ -198,7 +213,7 @@ class MagArchitecten extends Timber\Site
         return $text;
     }
 
-    public function encrypt_email($text)
+    public function encrypt_email($text, $class)
     {
         $address = strtolower($text);
         $sserdda = strrev($address);
@@ -238,7 +253,7 @@ class MagArchitecten extends Timber\Site
                 " }\n".
                 " }\n".
                 " knil=link.split(\"\").reverse().join(\"\")\n".
-                "document.write(\"<a class='rtl underline text-white' href='mailto:\"+link+\"'>\"+knil+\"</a>\")\n" .
+                "document.write(\"<a class='rtl " . $class . "' href='mailto:\"+link+\"'>\"+knil+\"</a>\")\n" .
                 "\n".
                 "//-"."->\n" .
                 "<" . "/script><noscript><span class='rtl'>". $sserdda ."</span>" . "<"."/noscript>";
