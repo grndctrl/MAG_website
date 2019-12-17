@@ -5,7 +5,7 @@ import 'zenscroll'
 import { core } from './js/core'
 import { header, nav, footer, barbaManager } from './js/layout'
 import { images, scrollAnchors, expander, cursorBekijk, slider, sliderMobile, ajaxModule, lazyloader } from './js/components'
-import { animFadeIn, animMoveIn, animSvgIn } from './js/animations'
+import { animFadeIn, animMoveIn, animSvgIn, animHeroSvgIn } from './js/animations'
 
 (function () {
   core.attach(header, { element: document.querySelector('.header-main') })
@@ -25,6 +25,7 @@ import { animFadeIn, animMoveIn, animSvgIn } from './js/animations'
   core.attach(animFadeIn, { target: '.anim-fade-in' }, true)
   core.attach(animMoveIn, { target: '.anim-move-in' }, true)
   core.attach(animSvgIn, { target: '.anim-svg-in' }, true)
+  core.attach(animHeroSvgIn, {}, true)
 
   core.init()
 })()
