@@ -1,5 +1,6 @@
 import { CoreModule, CoreScrollScene } from '../core'
 import anime from 'animejs'
+import CSSParser from 'css-translate-matrix-parser';
 
 class AnimSvgIn extends CoreModule {
   init(options) {
@@ -33,39 +34,43 @@ class AnimSvgIn extends CoreModule {
 
   svgIn(wrapper) {
     const svg = wrapper.querySelector('svg')
-    const words = Array.from(svg.querySelectorAll('.word'))
+    const lines = Array.from(svg.querySelectorAll('.line'))
     const index = 0
+    let values = []
 
-    for (let i = words.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      let x = words[i];
-      words[i] = words[j];
-      words[j] = x;
-    }
+    lines.forEach(line => {
+      let matrixValues = CSSParser.fromElement(line.querySelector('g'));
+      values.push(matrixValues[4])
+    })
 
-    this.fadeIn(words, index)
+    let average = 0
+    values.forEach(value => {
+      average += value
+    })
+    average = average / values.length
+    this.fadeIn(lines, values, average, index)
   }
 
-  fadeIn(words, index) {
-    words[index].style.opacity = 0
-    let x = Math.random() * 20 * (Math.random() > 0.5 ? 1 : -1)
-    let y = -10
+  fadeIn(lines, values, average, index) {
+    lines[index].style.opacity = 0
+
+
+    let x = (-1 * (values[index] - average)) + 'px'
 
     anime({
-      targets: words[index],
+      targets: lines[index],
       opacity: [0, 1],
-      translateX: [0, 0],
-      translateY: [0, 0],
+      translateX: [x, 0],
       easing: 'easeInOutSine',
-      duration: 400,
+      duration: 800,
     })
 
     setTimeout(() => {
       index++
-      if (index < words.length) {
-        this.fadeIn(words, index)
+      if (index < lines.length) {
+        this.fadeIn(lines, values, average, index)
       }
-    }, 50)
+    }, 200)
 
   }
 

@@ -2,7 +2,7 @@
 {% if width %}
   {% set calc_width = "width: calc(100vw * " ~ width ~ " / 1440)" %}
 {% else %}
-  {% set calc_width = "100%" %}
+  {% set calc_width = "width: 100%" %}
 {% endif %}
 
 {% set path = "components/" ~ component ~ ".svg.twig" %}

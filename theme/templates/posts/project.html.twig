@@ -2,7 +2,7 @@
 
 {% block main %}
 
-  <section class="header-offset lg:pb-20">
+  <section class="header-offset-project lg:pb-20">
     <div class="container hidden md:block">
 
       <div class="row">
@@ -51,7 +51,7 @@
         <div class="swiper-pagination"></div>
       </div>
       <div class="container">
-        <h1 class="font-light text-title mt-20 mb-4">
+        <h1 class="font-light text-project-title mt-12 mb-4">
           {{ post.title }}
         </h1>
         <p class="text-xlarge leading-none">
@@ -143,7 +143,7 @@
     <div class="container">
       <div class="row">
         <div class="col w-full lg:w-10/12 lg:mx-1/12">
-          <h2 class="hidden md:block text-title font-light mt-20 mb-10">Andere projecten</h2>
+          <h2 class="hidden md:block text-title font-light md:mt-20 lg:mt-32 mb-10">Andere projecten</h2>
           <div class="row md:mb-12">
             <div class="col anim-move-in hidden md:block w-1/2 mb-20">
               <a href="{{ prev_project.link }}">
@@ -180,7 +180,7 @@
                 <div class="hidden md:block cursor-bekijk-wrapper">
                   {% if next_project.meta("use_quote") %}
                     <div class="quote-wrapper landscape-wide">
-                      <div class="quote-content text-quote leading-tight p-8 flex items-start">
+                      <div class="quote-content text-quote leading-tight p-4 md:p-6 lg:p-8 flex items-start">
                         <blockquote>
                           {{ next_project.meta('quote') }}
                         </blockquote>

@@ -5,6 +5,8 @@ import { CoreEventListener } from '../core/core-event'
 class Nav extends CoreModule {
   init(options) {
     this.element = options.element
+    this.scrollY = 0
+
     this.addEventListeners()
 
     this.toggles = document.querySelectorAll('.toggle-menu')
@@ -73,6 +75,7 @@ class Nav extends CoreModule {
     }
 
     if (this.element.classList.contains('active')) {
+      document.body.classList.remove('menu-open')
       this.element.classList.remove('active')
       this.element.classList.add('animating')
       setTimeout(() => {
@@ -81,7 +84,7 @@ class Nav extends CoreModule {
     }
   }
 
-  toggleMenu() {
+  toggleMenu() {  
     if (this.element.classList.contains('animating')) {
       return
     }
@@ -89,14 +92,17 @@ class Nav extends CoreModule {
     if (this.element.classList.contains('active')) {
       this.element.classList.remove('active')
       this.element.classList.add('animating')
+      document.body.classList.remove('menu-open')
       setTimeout(() => {
         this.element.classList.remove('animating')
       }, 400)
     } else {
+      this.scrollY = window.scrollY
       this.element.classList.add('active')
       this.element.classList.add('animating')
       setTimeout(() => {
         this.element.classList.remove('animating')
+        document.body.classList.add('menu-open')
       }, 400)
     }
   }

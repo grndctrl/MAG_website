@@ -32,10 +32,12 @@ module.exports = {
       '6xl': '8.75rem'   //140
     },
     colors: {
-      'black': '#000000',
+      'black': '#1F2A20',
+      'green-black': '#1F2A20',
       'white': '#ffffff',
       'green-dark': '#091E0C',
       'green-light': '#E8F1ED',
+      'green-lightest': '#F1F5F3',
       'grey': '#CCD9DA',
       'red': '#B34623',
       'transparent': 'transparent'

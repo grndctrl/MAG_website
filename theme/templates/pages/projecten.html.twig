@@ -7,9 +7,9 @@
   <section class="section header-offset">
     <div class="container pt-10 md:pt-20">
       <div class="row">
-        <div class="col w-full lg:mx-1/12 lg:w-10/12">
+        <div class="col w-full xl:mx-1/12 xl:w-10/12">
           <h1 class="font-light text-xlarge mb-6 md:mb-20">
-            Onze Projecten
+            {{ post.title }}
           </h1>
 
           <div class="ajax-wrapper row flex-wrap">
@@ -19,13 +19,13 @@
                 {% set delay = 200 %}
               {% endif %}
 
-              <div class="col anim-move-in w-full md:w-1/2 mb-20" data-anim-delay="{{ delay }}">
+              <div class="col anim-move-in w-full md:w-1/2 mb-16 md:mb-20" data-anim-delay="{{ delay }}">
                 <a href="{{ project.link }}">
 
                   <div class="cursor-bekijk-wrapper">
                     {% if project.meta("use_quote") %}
-                      <div class="quote-wrapper landscape-wide">
-                        <div class="quote-content text-quote leading-tight p-8 flex items-start">
+                      <div class="quote-wrapper landscape-project">
+                        <div class="quote-content text-quote leading-tight p-4 md:p-6 lg:p-8 flex items-start">
                           <blockquote>
                             {{ project.meta('quote') }}
                           </blockquote>
@@ -34,7 +34,7 @@
 
                     {% else %}
                       {% include "components/image.html.twig" with {
-                        figure_class: 'landscape-wide',
+                        figure_class: 'landscape-project',
                         image: project.meta('header').image
                       } %}
                     {% endif %}
@@ -44,7 +44,7 @@
                     </div>
                   </div>
 
-                  <div class="mt-4">
+                  <div class="mt-2 md:mt-4">
                     <h3 class="text-title font-light">
                       <span class="underline">
                         {{ project.title }}

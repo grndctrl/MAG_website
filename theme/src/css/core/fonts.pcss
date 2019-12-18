@@ -1,5 +1,6 @@
 body, html {
   @apply font-light;
+  letter-spacing: 0.03em;
 }
 
 h1, h2, h3 {
@@ -11,6 +12,10 @@ p {
   letter-spacing: 0.03em;
 }
 
+.text-menu {
+  @apply text-4xl;
+}
+
 .text-hero {
   @apply text-4xl;
 }
@@ -19,17 +24,27 @@ p {
   @apply text-3xl;
 } 
 
+  .text-quote {
+    font-size: 22px;
+  }
+
 /* 
 .text-large {
   @apply text-4xl;
 } 
 
-.text-quote {
-  @apply text-3xl;
-}  */
+*/
+
+.text-caption {
+  @apply text-xl;
+} 
 
 .text-title {
   @apply text-xl;
+} 
+
+.text-project-title {
+  font-size: 22px;
 } 
 
 .text-body {
@@ -38,24 +53,46 @@ p {
 
 .text-small {
   @apply text-base;
-} 
+}
+
+.text-xsmall {
+  @apply text-sm;
+}
 
 @screen md {
   .text-xlarge {
     @apply text-4xl;
   }
   .text-hero {
-    @pplay text-5xl;
+    @apply text-5xl;
   }
+
+  .text-project-title,
+  .text-title {
+    @apply text-xl;
+  } 
+
+  .text-quote {
+    font-size: 24px;
+  }
+
+  .text-menu {
+    @apply text-5xl;
+  }
+
 }
 
 @screen lg {
+  .text-menu {
+    font-size: 6rem;
+  }
+
   .text-hero {
     @apply text-6xl;
   }
 
   .text-xlarge {
-    @apply text-5xl;
+    @apply text-4xl;
   } 
 
   .text-large {
@@ -63,9 +100,14 @@ p {
   } 
 
   .text-quote {
-    @apply text-3xl;
+    font-size: 28px;
   } 
 
+  .text-caption {
+    @apply text-xl;
+  }
+
+  .text-project-title,
   .text-title {
     @apply text-2xl;
   } 
@@ -75,7 +117,22 @@ p {
   }
 
   .text-small {
-    @apply text-base;
+    font-size: 1.05rem;
+    letter-spacing: 0.03rem;
+  } 
+}
+
+@screen xl {
+  .text-menu {
+    font-size: 7.8rem;
+  }
+
+  .text-quote {
+    @apply text-3xl;
+  }
+
+  .text-xlarge {
+    @apply text-5xl;
   } 
 }
 
@@ -94,9 +151,13 @@ p {
 
   .text-quote {
     font-size: calc(100vw * 40 / 1600);
-  } 
+  }
 
-  .text-title {
+  .text-caption {
+    font-size: calc(100vw * 28 / 1600);
+  }
+
+  .text-title, .text-project-title {
     font-size: calc(100vw * 34 / 1600);
   } 
 

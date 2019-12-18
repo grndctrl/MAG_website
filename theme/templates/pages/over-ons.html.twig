@@ -8,17 +8,16 @@
     <div class="container pt-10 md:pt-20">
 
       <div class="row items-start">
-        <div class="col w-full mb-10 md:ml-1/12 md:w-6/12 md:mb-0">
+        <div class="col w-full mb-10 md:mx-1/12 md:w-5/12 md:mb-0">
 
           {% include "components/svg-wrapper.html.twig" with {
-            component: 'ontwerpen-begint-bij-2',
-            width: 679,
-            class: ['hidden', 'lg:block']
+            component: 'mensen-voor',
+            class: ['hidden', 'md:block', 'anim-svg-in']
           } %}
 
           {% include "components/svg-wrapper.html.twig" with {
-            component: 'ontwerpen-begint-bij_mobile',
-            class: ['lg:hidden']
+            component: 'mensen-voor_mobile',
+            class: ['md:hidden', 'anim-svg-in']
           } %}
 
           {% include "components/expander.html.twig" with {
@@ -27,7 +26,17 @@
 
         </div>
 
-        <div class="col anim-move-in w-full md:w-4/12 md:ml-1/12 md:mt-1/12 lg:w-3/12 lg:mx-1/12" data-anim-direction="left">
+        <div class="col hidden lg:block anim-move-in w-full md:w-4/12 md:ml-1/12 md:mt-1/12 lg:w-3/12 lg:mx-1/12" data-anim-direction="left">
+
+          {% include "components/image.html.twig" with {
+            figure_class : "portrait",
+            image: post.meta('image_1'),
+            size: 'portrait'
+          } %}
+
+        </div>
+
+        <div class="col lg:hidden w-full md:w-4/12 md:ml-1/12 md:mt-1/12 lg:w-3/12 lg:mx-1/12">
 
           {% include "components/image.html.twig" with {
             figure_class : "portrait",
@@ -59,13 +68,12 @@
             <div>
               {% include "components/svg-wrapper.html.twig" with {
                 component: 'wij-zorgen-voor',
-                width: 490,
-                class: ['hidden', 'md:block']
+                class: ['hidden', 'md:block', 'anim-svg-in']
               } %}
 
               {% include "components/svg-wrapper.html.twig" with {
                 component: 'wij-zorgen-voor_mobile',
-                class: ['md:hidden']
+                class: ['md:hidden', 'anim-svg-in']
               } %}
 
               {% include "components/expander.html.twig" with {
@@ -93,17 +101,16 @@
 
         </div>
 
-        <div class="col w-full mb-10 md:w-8/12 md:mx-2/12 md:mt-1/12 md:mb-0">
+        <div class="col w-full mb-10 md:w-6/12 md:ml-2/12 md:mt-1/12 md:mb-0">
 
           {% include "components/svg-wrapper.html.twig"  with { 
-            component: "samen-komen",
-            width: 579,
-            class: ['hidden', 'md:block']
+            component: "het-resultaat",
+            class: ['hidden', 'md:block', 'anim-svg-in']
           } %}
 
           {% include "components/svg-wrapper.html.twig"  with { 
-            component: "samen-komen_mobile",
-            class: ['md:hidden']
+            component: "het-resultaat_mobile",
+            class: ['md:hidden', 'anim-svg-in']
           } %}
 
           <div style="max-width: 800px">
@@ -118,8 +125,8 @@
     </div>
   </section>
 
-  <section class="section md:bg-white">
-    <div class="container mt-10 md:mb-20">
+  <section class="section md:bg-green-lightest">
+    <div class="container mt-10 md:mt-24 lg:mt-32 md:mb-20 lg:mb-24">
 
       <div class="row items-start">
 

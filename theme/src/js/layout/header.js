@@ -114,9 +114,10 @@ class Header extends CoreModule {
     } else {
       if (this.scrollingUp === true) {
         this.scrollOffset = 0
+        
       }
       this.scrollOffset += Math.abs(window.scrollY - this.lastScrollPos)
-      if (this.scrollOffset > 40) {
+      if (this.scrollOffset > 80) {
         this.hideLogo()
       }
       this.scrollingUp = false
@@ -146,11 +147,12 @@ class Header extends CoreModule {
       this.logo.classList.add('animating')
     
       let top = '-' + this.logo.clientHeight + 'px'
+      // let top = '-' + this.scrollOffset + 'px'
       anime({
         targets: this.logo,
         top: top,
-        easing: 'easeInSine',
-        duration: 400,
+        easing: 'linear',
+        duration: 200,
         complete: () => {
           this.logo.classList.remove('animating')
         }

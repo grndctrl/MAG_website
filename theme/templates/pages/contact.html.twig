@@ -8,17 +8,16 @@
     <div class="container pt-10 md:pt-20">
 
       <div class="row">
-        <div class="col w-full md:w-8/12 md:mx-2/12">
+        <div class="col w-full md:w-7/12 md:ml-2/12">
 
           {% include "components/svg-wrapper.html.twig" with {
-            component: 'iedereen-heeft-ideeen',
-            width: 724,
-            class: ['hidden', 'md:block']
+            component: 'samen-bedenken',
+            class: ['hidden', 'md:block', 'anim-svg-in']
           } %}
 
           {% include "components/svg-wrapper.html.twig" with {
-            component: 'iedereen-heeft-ideeen_mobile',
-            class: ['md:hidden']
+            component: 'samen-bedenken_mobile',
+            class: ['md:hidden', 'anim-svg-in']
           } %}
 
         </div>
