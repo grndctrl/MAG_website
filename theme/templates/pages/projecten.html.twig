@@ -14,12 +14,15 @@
 
           <div class="ajax-wrapper row flex-wrap">
             {% for project in projects %}
-              {% set delay = 0 %}
+              {% set delay = 200 %}
               {% if loop.index0 is odd %}
-                {% set delay = 200 %}
+                {% set delay = 400 %}
               {% endif %}
-
-              <div class="col anim-move-in w-full md:w-1/2 mb-16 md:mb-20" data-anim-delay="{{ delay }}">
+              {% set animClass = 'anim-move-in' %}
+               {% if loop.index0 == 0 or loop.index0 == 1 %}
+                {% set animClass = '' %}
+              {% endif %}
+              <div class="col {{ animClass }} w-full md:w-1/2 mb-16 md:mb-20" data-anim-delay="{{ delay }}" data-anim-hook="99">
                 <a href="{{ project.link }}">
 
                   <div class="cursor-bekijk-wrapper">

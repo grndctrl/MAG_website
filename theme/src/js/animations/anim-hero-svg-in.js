@@ -8,7 +8,7 @@ class AnimHeroSvgIn extends CoreModule {
 
     elements.forEach((element) => {
       let lines = element.querySelectorAll('.line')
-      let delay = 1000
+      let delay = 200
 
       setTimeout(() => {
         this.fadeIn(lines, 0)
@@ -41,7 +41,11 @@ class AnimHeroSvgIn extends CoreModule {
           73.316406 - offset,
           36.435639 - offset
         ]
-        this.shift(lines, values, 0)
+        
+        setTimeout(()=> {
+          this.shift(lines, values, 0)
+          console.log("TCL: AnimHeroSvgIn -> fadeIn -> lines, values, index", lines, values, index)
+        }, 400)
       }
     }, 100)
   }

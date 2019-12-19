@@ -21,13 +21,13 @@ class Header extends CoreModule {
       let events = []
       events.push(
         new CoreEventListener('pin-header', () => {
+          this.forceShowLogo()
           this.pin()
         })
       )
       events.push(
         new CoreEventListener('unpin-header', () => {
           this.unpin()
-          this.showLogo()
         })
       )
 
@@ -49,13 +49,13 @@ class Header extends CoreModule {
       scenes.push(
         new CoreScrollScene({
           offset: () => {
-            return 20
+            return 40
           },
           enter: (event) => {
-            eventBus.$emit('pin-header')
+            eventBus.$emit('unpin-header')
           },
           leave: (event) => {
-            eventBus.$emit('unpin-header')
+            eventBus.$emit('pin-header')
           }
         })
       )
@@ -102,12 +102,16 @@ class Header extends CoreModule {
   }
 
   onScroll(event) {
+    if (window.scrollY < 0) {
+      // this.showLogo()
+      return
+    }
     if (window.scrollY < this.lastScrollPos) {
       if (this.scrollingUp === false) {
         this.scrollOffset = 0
       }
       this.scrollOffset += Math.abs(window.scrollY - this.lastScrollPos)
-      if (this.scrollOffset > 10) {
+      if (this.scrollOffset > 2) {
         this.showLogo()
       }
       this.scrollingUp = true
@@ -117,7 +121,7 @@ class Header extends CoreModule {
         
       }
       this.scrollOffset += Math.abs(window.scrollY - this.lastScrollPos)
-      if (this.scrollOffset > 80) {
+      if (this.scrollOffset > 2) {
         this.hideLogo()
       }
       this.scrollingUp = false
@@ -142,8 +146,25 @@ class Header extends CoreModule {
     }
   }
 
+  forceShowLogo() {
+    this.logo.classList.add('animating')
+    
+    let top = 0
+    anime({
+      targets: this.logo,
+      top: top,
+      easing: 'easeInSine',
+      duration: 400,
+      complete: () => {
+        this.logo.classList.remove('animating')
+      }
+    })
+  }
+
   hideLogo() {
-    if (!this.logo.classList.contains('animating')) {
+    if (this.logo.classList.contains('animating') || this.logo.classList.contains('pinned')) {
+      return
+    } else {
       this.logo.classList.add('animating')
     
       let top = '-' + this.logo.clientHeight + 'px'

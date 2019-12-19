@@ -1,6 +1,5 @@
 import { CoreModule, CoreScrollScene } from '../core'
 import anime from 'animejs'
-import CSSParser from 'css-translate-matrix-parser';
 
 class AnimSvgIn extends CoreModule {
   init(options) {
@@ -38,9 +37,12 @@ class AnimSvgIn extends CoreModule {
     const index = 0
     let values = []
 
+ 
     lines.forEach(line => {
-      let matrixValues = CSSParser.fromElement(line.querySelector('g'));
-      values.push(matrixValues[4])
+      const transform = line.querySelector('g').getAttribute('transform')
+      const tx = parseFloat(transform.match(/\((.*)\)/)[1].split(', ')[0])
+
+      values.push(tx)
     })
 
     let average = 0
@@ -48,13 +50,33 @@ class AnimSvgIn extends CoreModule {
       average += value
     })
     average = average / values.length
-    this.fadeIn(lines, values, average, index)
+    this.shift(lines, values, average, index)
   }
 
   fadeIn(lines, values, average, index) {
-    lines[index].style.opacity = 0
+    let x = (-1 * (values[index] - average)) + 'px'
 
+    anime({
+      targets: lines[index],
+      opacity: [0, 1],
+      translateX: [x, x],
+      translateY: [10, 0],
+      easing: 'easeInOutSine',
+      duration: 400,
+    })
 
+    setTimeout(() => {
+      index++
+      if (index < lines.length) {
+        this.fadeIn(lines, values, average, index)
+      } else {
+        this.shift(lines, values, average, 0)
+      }
+    }, 100)
+
+  }
+
+  shift(lines, values, average, index) {
     let x = (-1 * (values[index] - average)) + 'px'
 
     anime({
@@ -62,16 +84,16 @@ class AnimSvgIn extends CoreModule {
       opacity: [0, 1],
       translateX: [x, 0],
       easing: 'easeInOutSine',
-      duration: 800,
+      duration: 400,
     })
 
     setTimeout(() => {
       index++
-      if (index < lines.length) {
-        this.fadeIn(lines, values, average, index)
-      }
-    }, 200)
 
+      if (index < lines.length) {
+        this.shift(lines, values, average, index)
+      } 
+    }, 100)
   }
 
   destroy() {
