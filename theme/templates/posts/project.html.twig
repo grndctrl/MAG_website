@@ -150,10 +150,16 @@
 
                 <div class="cursor-bekijk-wrapper">
                   {% if prev_project.meta("use_quote") %}
-                    {{ prev_project.meta('quote') }}
+                    <div class="quote-wrapper landscape-project">
+                      <div class="quote-content text-quote leading-tight p-4 md:p-6 lg:p-8 flex items-start">
+                        <blockquote>
+                          {{ prev_project.meta('quote') }}
+                        </blockquote>
+                      </div>
+                    </div>
                   {% else %}
                     {% include "components/image.html.twig" with {
-                      figure_class: 'landscape-wide',
+                      figure_class: 'landscape-project',
                       image: prev_project.meta('header').image
                     } %}
                   {% endif %}
@@ -189,7 +195,7 @@
 
                   {% else %}
                     {% include "components/image.html.twig" with {
-                      figure_class: 'landscape-wide',
+                      figure_class: 'landscape-project',
                       image: next_project.meta('header').image
                     } %}
                   {% endif %}
