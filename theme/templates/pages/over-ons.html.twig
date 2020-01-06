@@ -21,7 +21,8 @@
           } %}
 
           {% include "components/expander.html.twig" with {
-            content : "lorem ipsum"
+            content : post.meta('text_1'),
+            class: ['anim-fade-in']
           } %}
 
         </div>
@@ -77,7 +78,8 @@
               } %}
 
               {% include "components/expander.html.twig" with {
-                content : "lorem ipsum"
+                content : post.meta('text_2'),
+                class: ['anim-fade-in']
               } %}
 
             </div>
@@ -115,7 +117,8 @@
 
           <div style="max-width: 800px">
             {% include "components/expander.html.twig" with {
-              content : "lorem ipsum"
+              content : post.meta('text_3'),
+              class: ['anim-fade-in']
             } %}
           </div>
 
