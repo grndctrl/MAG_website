@@ -19,12 +19,12 @@
           {# {% include "components/gebouw-van_mobile.svg.twig" %} #}
           {% include "components/svg-wrapper.html.twig" with {
             component: 'gebouw-van_mobile',
-            class: ['md:hidden']
+            class: ['md:hidden', 'anim-svg-in', 'pt-1']
           } %}
 
           {% include "components/svg-wrapper.html.twig" with {
             component: 'gebouw-van_tablet',
-            class: ['hidden', 'md:block']
+            class: ['hidden', 'md:block', 'anim-svg-in']
           } %}
         </div>
       </div>
