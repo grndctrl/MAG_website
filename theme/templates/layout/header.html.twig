@@ -1,18 +1,15 @@
-<header class="header-main">
+<header class="section header-main pointer-events-none fixed z-20 w-full">
+  <div class="container flex justify-between">
 
-  <div class="header-logo fixed top-0 left-0 z-20">
-    <div class="section container">
+    <div class="header-logo pointer-events-auto top-0 left-0 z-20">
       <a href="{{ site.link }}">
         <div class="svg-wrapper lg:-mt-4">
           {% include "components/header-logo.svg.twig" %}
         </div>
       </a>
     </div>
-  </div>
 
-  <div class="pointer-events-none fixed top-0 z-30 w-full flex items-center">
-
-    <div class="section container">
+    <div class="top-0 z-30 w-full flex items-center justify-end">
 
       {% block header %}
 
@@ -29,7 +26,7 @@
               </div>
             </div>
           </div>
-          <div class="nav-burger-wrapper flex items-center justify-end lg:-mt-4">
+          <div class="nav-burger-wrapper cursor-pointer flex items-center justify-end lg:-mt-4">
             <div class="pointer-events-auto nav-burger toggle-menu relative z-50">
               <span></span>
               <span></span>
@@ -42,6 +39,5 @@
       {% endblock %}
 
     </div>
-
   </div>
 </header>

@@ -4,7 +4,7 @@ import 'zenscroll'
 
 import { core } from './js/core'
 import { header, nav, footer, barbaManager } from './js/layout'
-import { images, scrollAnchors, expander, cursorBekijk, slider, sliderMobile, ajaxModule, lazyloader } from './js/components'
+import { images, scrollAnchors, expander, cursorBekijk, slider, sliderMobile, ajaxModule, lazyloader, truncateManager, pagedProjectsManager } from './js/components'
 import { animFadeIn, animMoveIn, animSvgIn, animHeroSvgIn } from './js/animations'
 
 (function () {
@@ -21,6 +21,8 @@ import { animFadeIn, animMoveIn, animSvgIn, animHeroSvgIn } from './js/animation
   core.attach(sliderMobile, {}, true)
   core.attach(ajaxModule, { target: '.ajax-load-more' }, true)
   core.attach(lazyloader, { target: '.lazy' }, true)
+  core.attach(truncateManager, {}, true)
+  core.attach(pagedProjectsManager, {}, true)
 
   core.attach(animFadeIn, { target: '.anim-fade-in' }, true)
   core.attach(animMoveIn, { target: '.anim-move-in' }, true)

@@ -13,10 +13,10 @@ $timber_post = Timber::query_post();
 $context['post'] = $timber_post;
 
 if ($timber_post->post_type == 'project') {
-  $args = array(
-    'post_type' => 'project'
-  );
-  $context['projects'] = new Timber\PostQuery($args);
+  // $args = array(
+  //   'post_type' => 'project'
+  // );
+  // $context['projects'] = new Timber\PostQuery($args);
 
   $index = 0;
   $currIndex = 0;

@@ -7,5 +7,7 @@ import { slider } from './slider'
 import { ajaxModule } from './ajax-module'
 import { sliderMobile } from './slider-mobile'
 import { lazyloader } from './lazyloader'
+import { truncateManager } from './truncate-manager'
+import { pagedProjectsManager } from './paged-project-manager'
 
-export { lazyloader, ajaxModule, scrollAnchors, images, dummyModule, expander, cursorBekijk, slider, sliderMobile }
+export { pagedProjectsManager, truncateManager, lazyloader, ajaxModule, scrollAnchors, images, dummyModule, expander, cursorBekijk, slider, sliderMobile }

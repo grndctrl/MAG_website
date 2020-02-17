@@ -42,7 +42,12 @@ class MagArchitecten extends Timber\Site
         add_action('admin_enqueue_scripts', array( $this, 'load_admin_scripts' ));
         add_action('wp_enqueue_scripts', array( $this, 'load_scripts' ));
         add_filter('get_twig', array($this, 'add_to_twig'));
+        add_filter('jpeg_quality', array( $this, 'jpeg_quality' ));
         parent::__construct();
+    }
+
+    public function jpeg_quality($arg) {
+        return 90;
     }
 
     public function theme_supports()
@@ -118,9 +123,10 @@ class MagArchitecten extends Timber\Site
         }
 
         $args = array(
-            'post_type' => 'project'
+            'post_type' => 'project',
+            'posts_per_page' => -1
           );
-        $projects = Timber::get_posts($args);
+        $projects = new Timber\PostQuery($args);
         $context['projects'] = $projects;
 
         return $context;
@@ -138,21 +144,21 @@ class MagArchitecten extends Timber\Site
             ),
 
             'portrait' => array(
-                'resize' => array(720),
-                'srcset' => array(0.5, 2),
-                'sizes' => '(min-width: 640px) 50vw, 100vw',
+                'resize' => array(800),
+                // 'srcset' => array(0.5, 2),
+                'sizes' => '(min-width: 640px) 50vw, 90vw',
                 'oversize' => array(
-                    'allow' => false,
+                    'allow' => true,
                     'style_attr' => false,
                 ),
             ),
 
             'landscape' => array(
-                'resize' => array(1280),
-                'srcset' => array(0.5, 2),
-                'sizes' => '100vw',
+                'resize' => array(2560),
+                // 'srcset' => array(0.5, 1),
+                'sizes' => '90vw',
                 'oversize' => array(
-                    'allow' => false,
+                    'allow' => true,
                     'style_attr' => false,
                 ),
             ),

@@ -88,7 +88,7 @@
     <div class="container">
       <div class="row items-end">
 
-        <div class="col w-full lg:mx-1/12 md:w-5/12">
+        <div class="col w-full lg:ml-1/12 md:w-6/12">
           <div class="w-full pb-8 lg:pb-16 md:-mt-32 md:pt-3 lg:mt-0 lg: pt-0">
             {% include "components/svg-wrapper.html.twig" with {
               component: 'ontwerpen-begint-bij_mobile',
@@ -104,12 +104,12 @@
         </div>
 
         <div class="col w-full md:w-6/12 lg:w-4/12">
-          <p class="hidden md:block text-body">
-            Architectuur zien wij als een gebouw van stenen en een gebouw van mensen.
+          <p class="pt-20 mb:pt-0 md:block text-body">
+            {{ post.meta('project_text') }}
           </p>
 
-          <p class="pt-20 md:pt-8 lg:pt-16">
-            <a class="text-xl md:text-lg text-green-dark underline font-normal" href="{{ site.url }}/projecten">Bekijk onze projecten</a>
+          <p class="pt-16">
+            <a class="text-body text-green-dark underline font-normal" href="{{ site.url }}/projecten">Bekijk onze projecten</a>
           </p>
         </div>
 

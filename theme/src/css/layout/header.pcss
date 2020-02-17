@@ -7,6 +7,8 @@
 }
 
 .header-main {
+  padding-top: calc($section-offset / 2);
+
   &.dark {
     @apply text-green-dark;
     .header-logo {
@@ -31,6 +33,7 @@
 
 @screen md {
   .header-main {
+    padding-top: calc($section-offset / 2);
     .section {
       @apply py-10;
     }
@@ -39,5 +42,11 @@
     .svg-wrapper {
       width: 97px;
     }
+  }
+}
+
+@screen lg {
+  .header-main {
+    padding-top: $section-offset;
   }
 }

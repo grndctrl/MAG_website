@@ -1,5 +1,7 @@
 {% extends "core/base.html.twig" %}
 
+{% set main_class = ['project-page'] %}
+
 {% block main %}
 
   <section class="header-offset-project lg:pb-20">
@@ -32,24 +34,29 @@
     </div>
 
     <div class="md:hidden">
-      <div class="container relative py-5 bg-white">
-        <div class="slider-mobile swiper-container">
-          <div class="swiper-wrapper">
+      {% if post.meta("slider") | length > 0 %}
 
-            {% for slide in post.meta("slider") %}
+        <div class="container relative py-5 bg-white">
+          <div class="slider-mobile swiper-container">
+            <div class="swiper-wrapper">
 
-              <div class="swiper-slide border-box border-box w-auto h-full">
-                <figure class="slide-image">
-                  <img src="{{ Image(slide.image).src }}" alt="">
-                </figure>
-              </div>
+              {% for slide in post.meta("slider") %}
 
-            {% endfor %}
+                <div class="swiper-slide border-box border-box w-auto h-full">
+                  <figure class="slide-image">
+                    <img src="{{ slide.image|get_timber_image_src('portrait') }}" alt="">
+                  </figure>
+                </div>
 
+              {% endfor %}
+
+            </div>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
-      </div>
+
+      {% endif %}
+
       <div class="container">
         <h1 class="font-light text-project-title mt-12 mb-4">
           {{ post.title }}
@@ -81,7 +88,7 @@
 
                 {% if loop.index == 3 %}
                 </div>
-                <div class="col w-1/2">
+                <div class="col w-full md:w-1/2">
                 {% endif %}
 
               {% endfor %}
@@ -92,52 +99,80 @@
       </div>
 
       <div class="col anim-move-in w-full lg:ml-1/12 lg:w-5/12 lg:mr-1/12 text-body">
-        <div class="container lg:pl-0">
-          <p>
+      <style>
+      .project-description p {
+        margin-bottom: 16px;
+      }
+      .project-description a {
+        text-decoration: underline;
+      }
+      </style>
+        <div class="hidden md:block container project-description lg:pl-0">
+
             {{ post.meta('info').description }}
-          </p>
+
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="truncate-wrapper md:hidden container project-description lg:pl-0">
 
-  <section class="hidden md:block md:min-h-screen-width lg:min-h-screen bg-white relative">
-    <div class="text-xlarge absolute inset-0 py-20">
+            {{ post.meta('info').description|truncate(20) }}
 
-      <div class="slider h-full swiper-container">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-          <!-- Slides -->
-          {% for slide in post.meta("slider") %}
-
-            <div class="swiper-slide border-box border-box px-1/24  w-auto h-full">
-              <figure class="slide-image">
-                <img src="{{ Image(slide.image).src }}" alt="">
-              </figure>
-
-              {% if slide.footnote %}
-                <div class="absolute bg-white h-8 bottom-0 left-0 right-0 flex justify-center items-end">
-                  <div class="text-small">
-                    {{ slide.footnote }}
-                  </div>
-                </div>
-              {% endif %}
+            <div class="truncate-toggle expander-toggle cursor-pointer text-body">
+            Lees meer
+            <div class="caret">
+              {% include "components/caret.svg.twig" %}
+            </div>
             </div>
 
-          {% endfor %}
+            <div class="truncated-content hidden">
+              {{ post.meta('info').description }}
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if post.meta("slider") | length > 0 %}
+
+    <section class="hidden md:block md:min-h-screen-width lg:min-h-screen bg-white relative">
+      <div class="text-xlarge absolute inset-0 pt-20">
+
+        <div class="slider h-full swiper-container" style="padding-bottom: 48px;">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            {% for slide in post.meta("slider") %}
+
+              <div class="swiper-slide border-box border-box px-1/24  w-auto h-full">
+                <figure class="slide-image">
+                  <img src="{{ slide.image|get_timber_image_src('landscape') }}" alt="">
+                </figure>
+
+                {% if slide.footnote %}
+                  <div class="absolute bg-white left-0 right-0 flex justify-center items-end" style="bottom: -48px">
+                    <div class="text-small">
+                      {{ slide.footnote }}
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev">
+            <span class="underline">vorige</span></div>
+          <div class="swiper-button-next">
+            <span class="underline">volgende</span></div>
 
         </div>
 
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev">
-          <span class="underline">vorige</span></div>
-        <div class="swiper-button-next">
-          <span class="underline">volgende</span></div>
-
       </div>
+    </section>
 
-    </div>
-  </section>
+  {% endif %}
 
   <section class="section -mt-8 md:-mt-0">
     <div class="container">

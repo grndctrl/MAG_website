@@ -1,6 +1,6 @@
 .container {
   @apply mx-auto;
-  max-width: none;
+  max-width: $site-max-width;
   padding-left:calc($site-offset / 2);
   padding-right: calc($site-offset / 2);
 }
@@ -23,8 +23,6 @@
 
 @screen md {
   .container {
-    @apply mx-auto;
-    max-width: none;
     padding-left: $site-offset;
     padding-right: $site-offset;
   }

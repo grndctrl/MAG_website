@@ -3,7 +3,7 @@
 {% extends "core/base.html.twig" %}
 
 {% block main %}
-
+  <div class="paged-project-manager h-0 w-0"></div>
   <section class="section header-offset">
     <div class="container pt-10 md:pt-20">
       <div class="row">
@@ -13,7 +13,7 @@
           </h1>
 
           <div class="ajax-wrapper row flex-wrap">
-            {% for project in projects %}
+            {% for project in paged_projects %}
               {% set delay = 200 %}
               {% if loop.index0 is odd %}
                 {% set delay = 400 %}
@@ -22,8 +22,8 @@
                {% if loop.index0 == 0 or loop.index0 == 1 %}
                 {% set animClass = '' %}
               {% endif %}
-              <div class="col {{ animClass }} w-full md:w-1/2 mb-16 md:mb-20" data-anim-delay="{{ delay }}" data-anim-hook="99">
-                <a href="{{ project.link }}">
+              <div id="{{ project.slug }}" class="col {{ animClass }} w-full md:w-1/2 mb-16 md:mb-20" data-anim-delay="{{ delay }}" data-anim-hook="99">
+                <a project-page="{{ paged }}" href="{{ project.link }}" class="paged-projects-link" project-slug="{{ project.slug }}">
 
                   <div class="cursor-bekijk-wrapper">
                     {% if project.meta("use_quote") %}
@@ -68,8 +68,8 @@
       <div class="row">
         <div class="col w-full mb-6 lg:mx-1/12 lg:w-10/12 lg:mb-20">
 
-          {% if projects.pagination.next %}
-            <button class="ajax-load-more text-body font-light underline" data-ajax-wrapper="ajax-wrapper" data-ajax-url="{{ projects.pagination.next.link }}">
+          {% if paged_projects.pagination.next %}
+            <button class="ajax-load-more text-body font-light underline" data-ajax-wrapper="ajax-wrapper" data-ajax-url="{{ paged_projects.pagination.next.link }}">
               Meer projecten laden
             </button>
           {% endif %}

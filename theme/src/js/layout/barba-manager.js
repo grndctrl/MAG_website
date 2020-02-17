@@ -16,6 +16,7 @@ class BarbaManager extends CoreModule {
             beforeLeave() {
               document.body.classList.remove('barba-enter')
               document.body.classList.add('barba-leave')
+              window.lastMain = document.querySelector('main')
             },
 
             beforeEnter() {
@@ -26,7 +27,8 @@ class BarbaManager extends CoreModule {
               let scripts = Array.from(main.querySelectorAll('script'))
 
               scripts.forEach((script) => {
-                axios
+                if (script.getAttribute('src')) {
+                  axios
                   .get(script.getAttribute('src'))
                   .then(function(response) {
                     eval(response.data)
@@ -34,6 +36,10 @@ class BarbaManager extends CoreModule {
                   .catch(function(error) {
                     console.log(error)
                   })
+                } else {
+                  document.body.appendChild(script)
+                  // console.log(script.innerText)
+                }
               })
 
               window.scrollTo(0, 0)

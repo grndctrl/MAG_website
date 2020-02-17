@@ -13,6 +13,16 @@ if (!isset($paged) || !$paged){
 }
 
 $context = Timber::context();
+
+$args = array(
+    'post_type' => 'project',
+    'posts_per_page' => 8,
+    'paged' => $paged
+  );
+$paged_projects = new Timber\PostQuery($args);
+$context['paged_projects'] = $paged_projects;
+$context['paged'] = $paged;
+
 $timber_post = new Timber\Post();
 $context['post'] = $timber_post;
 
