@@ -43,7 +43,7 @@
 
           <li class="anim-move-in" data-anim-trigger="#anim-trigger-list" data-anim-delay="200">
             <span class="font-normal">Bezoek ons op</span><br>
-            {{ global_contact.meta('address') }}
+            <a class="underline" href="mailto:{{global_contact.meta('email')}}">{{global_contact.meta('email')}}</a>
             <br>
             <a class="underline" target="_blank" href="{{ post.meta('google_maps_url')}}">Google maps</a>
           </li>

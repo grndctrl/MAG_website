@@ -40,7 +40,13 @@ module.exports = {
     }, {
       test: /\.js$/,
 
-      include: [path.resolve(__dirname, 'theme', 'src')],
+      exclude : [
+        // /\bcore-js\b/,
+        // /\bwebpack\/buildin\b/,
+        /node_modules/
+      ],
+
+      // include: [path.resolve(__dirname, 'theme', 'src')],
 
       loader: 'babel-loader',
     }, {

@@ -24,7 +24,7 @@ module.exports = {
     require('postcss-easings'),
     require('postcss-advanced-variables'), 
     require('tailwindcss')('./tailwind.config.js'),
-    require('postcss-object-fit-images'),
+    // require('postcss-object-fit-images'),
     require('autoprefixer'),
     ...(process.env.NODE_ENV === 'production' ? [
       purgecss, 
