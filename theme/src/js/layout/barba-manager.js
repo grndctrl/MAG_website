@@ -7,6 +7,9 @@ import { CoreModule } from '../core/core-module'
 class BarbaManager extends CoreModule {
   init() {
     barba.use(barbaCss)
+
+    console.log('barba-init')
+
     try {
       barba.init({
         transitions: [
@@ -14,12 +17,14 @@ class BarbaManager extends CoreModule {
             name: 'barba-fade',
 
             beforeLeave() {
+              console.log('tick')
               document.body.classList.remove('barba-enter')
               document.body.classList.add('barba-leave')
               window.lastMain = document.querySelector('main')
             },
 
             beforeEnter() {
+              console.log('tock')
               document.body.classList.add('barba-enter')
               document.body.classList.remove('barba-leave')
 

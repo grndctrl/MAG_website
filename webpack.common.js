@@ -43,7 +43,7 @@ module.exports = {
       exclude : [
         // /\bcore-js\b/,
         // /\bwebpack\/buildin\b/,
-        /node_modules/
+        // /node_modules/
       ],
 
       // include: [path.resolve(__dirname, 'theme', 'src')],

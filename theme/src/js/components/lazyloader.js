@@ -20,6 +20,15 @@ class Lazyloader extends CoreModule {
         }
       )
     )
+
+    events.push(
+      new CoreEventListener(
+        'barba-before-enter',
+        (event) => {
+          this.observer.observe()
+        }
+      )
+    )
     super.eventListeners = events
 
     return super.init()
